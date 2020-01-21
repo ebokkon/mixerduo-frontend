@@ -11,6 +11,7 @@ function App() {
         <header className="App-header">
           <Navbar />
         </header>
+        <Route></Route>
       </div>
     </BrowserRouter>
   );
