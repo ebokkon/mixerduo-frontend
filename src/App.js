@@ -39,20 +39,12 @@ function App() {
         <Route
           exact
           path="/search"
-          render={props => (
-            <React.Fragment>
-              <Home />
-            </React.Fragment>
-          )}
+          render={props => <React.Fragment></React.Fragment>}
         ></Route>
         <Route
           exact
           path="/shoppingcart"
-          render={props => (
-            <React.Fragment>
-              <Home />
-            </React.Fragment>
-          )}
+          render={props => <React.Fragment></React.Fragment>}
         ></Route>
       </div>
     </BrowserRouter>

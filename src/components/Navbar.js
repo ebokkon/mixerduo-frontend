@@ -11,7 +11,7 @@ export default function Navbar() {
         Courses
       </Link>
       <Link style={linkStyle} to="/cocktails">
-        Browse cocktails
+        Browse Cocktails
       </Link>
       <Link style={linkStyle} to="/search">
         Search
@@ -34,5 +34,6 @@ const navbarStyle = {
 
 const linkStyle = {
   color: "#fff",
-  textDecoration: "none"
+  textDecoration: "none",
+  margin: "0 10px"
 };
