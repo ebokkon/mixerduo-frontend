@@ -4,7 +4,10 @@ import CocktailDetailsImage from "./CocktailDetailsImage";
 import Ingredients from "./Ingredients";
 
 export default function CocktailDetails(props) {
-  const [cocktail, setCocktail] = useHttp(props.url, []);
+  const [cocktail, setCocktail] = useHttp(
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${props.id.match.params.id}`,
+    []
+  );
   const [ingredients, setIngredients] = useState([]);
   const [measurements, setMeasurements] = useState([]);
 
@@ -17,23 +20,26 @@ export default function CocktailDetails(props) {
       }
     }
   };
+
   getIngredients();
 
-  return (
+  return cocktail === null ? (
+    <div>Loading...</div>
+  ) : (
     <div>
       <div>
         <CocktailDetailsImage />
       </div>
       <div>
-        {props.data.drinks.map(cocktail => (
+        {cocktail.data.drinks.map(drink => (
           <div>
-            <div>{cocktail.strDrink}</div>
-            <div>{cocktail.strCategory}</div>
-            <div>{cocktail.strIBA}</div>
-            <div>{cocktail.strGlass}</div>
+            <div>Name: {drink.strDrink}</div>
+            <div>Category: {drink.strCategory}</div>
+            <div>IBA: {drink.strIBA === null ? "-" : drink.strIBA}</div>
+            <div>Serve in: {drink.strGlass}</div>
             <Ingredients data={ingredients} />
             <Ingredients data={measurements} />
-            <div>{cocktail.strInstructions}</div>
+            <div>Instructions: {drink.strInstructions}</div>
           </div>
         ))}
         ;
