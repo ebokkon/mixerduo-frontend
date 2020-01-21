@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -8,9 +8,6 @@ import CocktailDetails from "./components/CocktailDetails";
 import "./App.css";
 
 function App() {
-  const [cocktail, setCocktail] = useState([]);
-  const [value, setValue] = useState(0);
-
   const handleClick = id => {};
 
   return (
