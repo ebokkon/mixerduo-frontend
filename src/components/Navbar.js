@@ -4,9 +4,14 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
+    body: {
+      backgroundColor: "lightblue"
+    },
+
     ul: {
       margin: 0,
       padding: 0
@@ -103,17 +108,15 @@ export default function Navbar() {
             color="textPrimary"
             className={classes.link}
           >
-            Browse Cocktails
+            Search
           </Link>
         </nav>
-        <Link
-          href="/shoppingcart"
-          color="primary"
-          variant="outlined"
-          className={classes.link}
+        <ShoppingCartIcon
+          style={{ cursor: "pointer" }}
+          onClick={event => (window.location.href = "pagelink")}
         >
           ShoppingCart
-        </Link>
+        </ShoppingCartIcon>
       </Toolbar>
     </AppBar>
   );
