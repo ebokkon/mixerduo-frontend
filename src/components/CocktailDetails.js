@@ -2,6 +2,7 @@ import React from "react";
 import { useHttp } from "../hooks/Http";
 import CocktailDetailsImage from "./CocktailDetailsImage";
 import Ingredients from "./Ingredients";
+import CircularProgress from "./CircularProgress";
 
 export default function CocktailDetails(props) {
   const [cocktail, setCocktail] = useHttp(
@@ -24,24 +25,28 @@ export default function CocktailDetails(props) {
   };
 
   return cocktail === null ? (
-    <div>Loading...</div>
+    <div>
+      <CircularProgress />
+    </div>
   ) : (
     <div>
       <div>
-        <CocktailDetailsImage />
-      </div>
-      <div>
         {cocktail.data.drinks.map(drink => (
           <div>
-            <div>Name: {drink.strDrink}</div>
-            <div>Category: {drink.strCategory}</div>
-            <div>IBA: {drink.strIBA === null ? "-" : drink.strIBA}</div>
-            <div>Serve in: {drink.strGlass}</div>
-            <div>Ingredients: </div>
-            <Ingredients tag={"Ingredients: "} data={getIngredients().ing} />
-            <div>Measurements: </div>
-            <Ingredients data={getIngredients().measure} />
-            <div>Instructions: {drink.strInstructions}</div>
+            <div>
+              <CocktailDetailsImage image={drink.strDrinkThumb} />
+            </div>
+            <div>
+              <div>Name: {drink.strDrink}</div>
+              <div>Category: {drink.strCategory}</div>
+              <div>IBA: {drink.strIBA === null ? "-" : drink.strIBA}</div>
+              <div>Serve in: {drink.strGlass}</div>
+              <div>Ingredients: </div>
+              <Ingredients tag={"Ingredients: "} data={getIngredients().ing} />
+              <div>Measurements: </div>
+              <Ingredients data={getIngredients().measure} />
+              <div>Instructions: {drink.strInstructions}</div>
+            </div>
           </div>
         ))}
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHttp } from "../hooks/Http";
+import CircularProgress from "./CircularProgress";
 
 export default function Search() {
   const [cocktails, setCocktails] = useHttp(
@@ -9,7 +10,9 @@ export default function Search() {
   const [optionsState, setOptionsState] = useState("");
 
   return cocktails === null ? (
-    <div>Loading...</div>
+    <div>
+      <CircularProgress />
+    </div>
   ) : (
     <div>
       <select value={optionsState}>
