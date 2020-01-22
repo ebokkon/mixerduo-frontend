@@ -2,10 +2,14 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import CocktailCard from "./components/CocktailCard";
+import CocktailDetails from "./components/CocktailDetails";
 
 import "./App.css";
 
 function App() {
+  const handleClick = id => {};
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -26,15 +30,24 @@ function App() {
           path="/courses"
           render={props => <React.Fragment></React.Fragment>}
         ></Route>
+
         <Route
           exact
           path="/cocktails"
-          render={props => <React.Fragment></React.Fragment>}
+          render={props => (
+            <React.Fragment>
+              <CocktailCard handleClick={handleClick} />
+            </React.Fragment>
+          )}
         ></Route>
         <Route
           exact
-          path="/cocktails:id"
-          render={props => <React.Fragment></React.Fragment>}
+          path={`/cocktails/:id`}
+          render={props => (
+            <React.Fragment>
+              <CocktailDetails id={props} />
+            </React.Fragment>
+          )}
         ></Route>
         <Route
           exact
