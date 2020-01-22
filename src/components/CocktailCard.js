@@ -35,10 +35,7 @@ export default function CocktailCard(props) {
       <Card className={classes.card} key={cocktail.idDrink}>
         <CardActionArea>
           <React.Fragment key={cocktail.idDrink}>
-            <CocktailImage
-              image={cocktail.strDrinkThumb}
-              handleClick={props.handleClick}
-            />
+            <CocktailImage image={cocktail.strDrinkThumb} />
             <CardContent>
               <CocktailItem item={cocktail} />
             </CardContent>

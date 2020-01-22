@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -98,8 +99,23 @@ const footers = [
 ];
 
 export default function Courses() {
-  const classes = useStyles();
+  const { cart, handleCart } = useContext(ShoppingCartContext);
 
+  const addToCart = (title, price) => {
+    console.log(cart);
+    if (cart.hasOwnProperty(title)) {
+      console.log(cart);
+      cart.title = (parseInt(cart[title]) + parseInt(price)).toString();
+      handleCart(cart);
+    } else {
+      const temp = { ...cart, title: price };
+      //cart.push(temp);
+      // cart[title] = price;
+      handleCart(temp);
+    }
+  };
+
+  const classes = useStyles();
   return (
     <React.Fragment>
       {/* <CssBaseline /> */}
@@ -162,6 +178,7 @@ export default function Courses() {
                 </CardContent>
                 <CardActions>
                   <Button
+                    onClick={() => addToCart(tier.title, tier.price)}
                     fullWidth
                     variant={tier.buttonVariant}
                     color="primary"

@@ -113,7 +113,7 @@ export default function Navbar() {
         </nav>
         <ShoppingCartIcon
           style={{ cursor: "pointer" }}
-          onClick={event => (window.location.href = "pagelink")}
+          onClick={event => (window.location.href = "/shoppingcart")}
         >
           ShoppingCart
         </ShoppingCartIcon>

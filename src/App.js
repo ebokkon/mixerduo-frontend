@@ -7,6 +7,8 @@ import CocktailDetails from "./components/CocktailDetails";
 import "./App.css";
 import Search from "./components/Search";
 import Courses from "./components/Courses";
+import ShoppingCart from "./components/ShoppingCart";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
   return (
@@ -24,47 +26,47 @@ function App() {
             </React.Fragment>
           )}
         ></Route>
-        <Route
-          exact
-          path="/courses"
-          render={props => (
-            <React.Fragment>
-              <Courses />
-            </React.Fragment>
-          )}
-        ></Route>
-        <Route
-          exact
-          path="/cocktails"
-          render={props => (
-            <React.Fragment>
-              <CocktailCard />
-            </React.Fragment>
-          )}
-        ></Route>
-        <Route
-          exact
-          path={`/cocktails/:id`}
-          render={props => (
-            <React.Fragment>
-              <CocktailDetails id={props} />
-            </React.Fragment>
-          )}
-        ></Route>
-        <Route
-          exact
-          path="/search"
-          render={props => (
-            <React.Fragment>
-              <Search />
-            </React.Fragment>
-          )}
-        ></Route>
-        <Route
-          exact
-          path="/shoppingcart"
-          render={props => <React.Fragment></React.Fragment>}
-        ></Route>
+        <ShoppingCartProvider>
+          <Route
+            exact
+            path="/courses"
+            render={props => (
+              <React.Fragment>
+                <Courses />
+              </React.Fragment>
+            )}
+          ></Route>
+
+          <Route
+            exact
+            path="/cocktails"
+            render={props => (
+              <React.Fragment>
+                <CocktailCard />
+              </React.Fragment>
+            )}
+          ></Route>
+          <Route
+            exact
+            path={`/cocktails/:id`}
+            render={props => (
+              <React.Fragment>
+                <CocktailDetails id={props} />
+              </React.Fragment>
+            )}
+          ></Route>
+          <Route
+            exact
+            path="/search"
+            render={props => (
+              <React.Fragment>
+                <Search />
+              </React.Fragment>
+            )}
+          ></Route>
+
+          <Route exact path="/shoppingcart" component={ShoppingCart}></Route>
+        </ShoppingCartProvider>
       </div>
     </BrowserRouter>
   );
