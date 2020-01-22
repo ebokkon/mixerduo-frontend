@@ -6,10 +6,9 @@ import CocktailCard from "./components/CocktailCard";
 import CocktailDetails from "./components/CocktailDetails";
 
 import "./App.css";
+import Search from "./components/Search";
 
 function App() {
-  const handleClick = id => {};
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -30,13 +29,12 @@ function App() {
           path="/courses"
           render={props => <React.Fragment></React.Fragment>}
         ></Route>
-
         <Route
           exact
           path="/cocktails"
           render={props => (
             <React.Fragment>
-              <CocktailCard handleClick={handleClick} />
+              <CocktailCard />
             </React.Fragment>
           )}
         ></Route>
@@ -52,7 +50,11 @@ function App() {
         <Route
           exact
           path="/search"
-          render={props => <React.Fragment></React.Fragment>}
+          render={props => (
+            <React.Fragment>
+              <Search />
+            </React.Fragment>
+          )}
         ></Route>
         <Route
           exact
