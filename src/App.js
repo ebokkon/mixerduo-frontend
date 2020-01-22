@@ -4,9 +4,9 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import CocktailCard from "./components/CocktailCard";
 import CocktailDetails from "./components/CocktailDetails";
-
 import "./App.css";
 import Search from "./components/Search";
+import Courses from "./components/Courses";
 
 function App() {
   return (
@@ -27,7 +27,11 @@ function App() {
         <Route
           exact
           path="/courses"
-          render={props => <React.Fragment></React.Fragment>}
+          render={props => (
+            <React.Fragment>
+              <Courses />
+            </React.Fragment>
+          )}
         ></Route>
         <Route
           exact
