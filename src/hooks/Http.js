@@ -16,6 +16,6 @@ export function useHttp(url, dependencies) {
       return error;
     }
   }, dependencies);
-  console.log(fetchedData);
+
   return [fetchedData];
 }
