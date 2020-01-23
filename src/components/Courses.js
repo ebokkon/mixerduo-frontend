@@ -108,21 +108,23 @@ const footers = [
 ];
 
 export default function Courses() {
-  const { cart, setCart } = useContext(ShoppingCartContext);
+  const { cart, handleCart } = useContext(ShoppingCartContext);
 
   const addToCart = (title, price) => {
-    console.log(price);
-    console.log(title);
-    if (cart.hasOwnProperty(title)) {
-      console.log(cart);
-      cart.title = (parseInt(cart[title]) + parseInt(price)).toString();
-      setCart(cart);
-    } else {
-      //cart.push(temp);
-      let temp = (cart[title] = price);
-      setCart(temp);
-      console.log(cart);
+    let x = false;
+    for (let i = 0; i < cart.length; i++) {
+      for (let [key] of Object.entries(cart[i])) {
+        if (key === title) {
+          x = true;
+          cart[i][key] = (parseInt(cart[i][key]) + parseInt(price)).toString();
+          break;
+        }
+      }
     }
+
+    if (!x) cart.push({ [title]: price });
+
+    handleCart(cart);
   };
 
   const classes = useStyles();

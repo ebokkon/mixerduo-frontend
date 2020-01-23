@@ -3,22 +3,24 @@ import { ShoppingCartContext } from "../context/ShoppingCartContext";
 
 export default function ShoppingCart() {
   const { cart, handleCart } = useContext(ShoppingCartContext);
-  console.log(cart);
 
-  return !cart ? (
-    <div></div>
+  return cart.length === 0 ? (
+    <div>No items in your cart!</div>
   ) : (
     <div>
       {" "}
       Ordered Items:
-      {/* {cart.map(item => {
+      {cart.map(item => {
         return (
           <div>
-            <div>{item}</div>
-            <div>{item}</div>
+            <div>
+              {" "}
+              {Object.keys(item)[0]} ----
+              {item[Object.keys(item)[0]]}
+            </div>
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 }
