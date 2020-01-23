@@ -11,8 +11,9 @@ import TableRow from "@material-ui/core/TableRow";
 export default function SimpleTable(props) {
   const useStyles = makeStyles({
     table: {
-      width: 500
-    }
+      width: 550
+    },
+    tableHeader: { fontWeight: "bold", fontSize: 20 }
   });
   const classes = useStyles();
 
@@ -31,18 +32,27 @@ export default function SimpleTable(props) {
 
   return (
     <div>
-      <h1>Ordered Items:</h1>
+      <h1
+        style={{
+          textAlign: "center",
+          color: "white",
+          marginBottom: 20,
+          marginTop: 20
+        }}
+      >
+        Ordered Items:
+      </h1>
 
       <TableContainer
         component={Paper}
-        style={{ width: 500, margin: "0 auto" }}
+        style={{ width: 550, margin: "0 auto" }}
       >
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Course Type</TableCell>
-              <TableCell>Quantity</TableCell>
-              <TableCell>Total Price</TableCell>
+              <TableCell className={classes.tableHeader}>Course Type</TableCell>
+              <TableCell className={classes.tableHeader}>Quantity</TableCell>
+              <TableCell className={classes.tableHeader}>Total Price</TableCell>
             </TableRow>
           </TableHead>
 
