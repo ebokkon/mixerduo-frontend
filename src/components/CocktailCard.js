@@ -38,7 +38,7 @@ export default function CocktailCard(props) {
   ) : (
     props.cocktails.map(cocktail => {
       return cocktail ? (
-        <div>
+        <div className={classes.container}>
           <Card className={classes.card} key={cocktail.idDrink}>
             <CardActionArea>
               <React.Fragment key={cocktail.idDrink}>

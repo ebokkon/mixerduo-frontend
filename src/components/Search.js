@@ -1,4 +1,5 @@
-import React, { useState, Link } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import CircularProgress from "./CircularProgress";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -18,7 +19,7 @@ export default function Search(props) {
   //   []
   // );
 
-  const [selectedCocktail, setSelectedCocktail] = useState("");
+  const [selectedCocktail, setSelectedCocktail] = useState(null);
 
   const handleOnchange = (event, value) => {
     value === null ? setSelectedCocktail(null) : setSelectedCocktail(value);
@@ -62,7 +63,7 @@ export default function Search(props) {
       </div>
       <div>
         {selectedCocktail === null ? (
-          props.cocktails.data.drinks.map(cocktail => (
+          props.cocktails.map(cocktail => (
             <Card className={classes.card} key={cocktail.idDrink}>
               <CardActionArea key={cocktail.idDrink}>
                 <CocktailImage image={cocktail.strDrinkThumb} />
@@ -96,7 +97,7 @@ export default function Search(props) {
             <CardActions>
               <FavoriteIcon size="small" color="primary" />
               <ShareIcon size="small" color="primary"></ShareIcon>
-              {/* <Link
+              <Link
                 className={classes.link}
                 to={`/cocktails/${selectedCocktail.idDrink}`}
                 id={selectedCocktail.idDrink}
@@ -104,7 +105,7 @@ export default function Search(props) {
                 color="primary"
               >
                 Learn More
-              </Link> */}
+              </Link>
             </CardActions>
           </Card>
         )}
