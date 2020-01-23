@@ -29,6 +29,7 @@ export default function CocktailCard(props) {
       textDecoration: "none"
     }
   });
+
   const classes = useStyles();
 
   return props.cocktails === null ? (

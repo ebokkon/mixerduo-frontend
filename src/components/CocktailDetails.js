@@ -10,14 +10,23 @@ import Typography from "@material-ui/core/Typography";
 import CircularProgress from "./CircularProgress";
 
 const useStyles = makeStyles({
-  card: {
-    minWidth: 275
+  cardWithImage: {
+    width: 430,
+    margin: 10
+  },
+  cardWithText: {
+    width: 500,
+    margin: 20
   },
   title: {
     fontSize: 14
   },
   pos: {
     marginBottom: 12
+  },
+  cardsContainer: {
+    position: "relative",
+    flex: "wrap"
   }
 });
 
@@ -48,21 +57,29 @@ export default function CocktailDetails(props) {
       <CircularProgress />
     </div>
   ) : (
-    <div>
+    <div className={classes.cardsContainer}>
       {cocktail.data.drinks.map(drink => (
         <div>
-          <Card>
+          <Card className={classes.cardWithImage}>
             <div>
               <CocktailDetailsImage image={drink.strDrinkThumb} />
             </div>
           </Card>
-          <Card>
+          <Card className={classes.cardWithText}>
             <CardContent>
               <div>
-                <div>Name: {drink.strDrink}</div>
-                <div>Category: {drink.strCategory}</div>
-                <div>IBA: {drink.strIBA === null ? "-" : drink.strIBA}</div>
-                <div>Serve in: {drink.strGlass}</div>
+                <div>
+                  <div>Name:</div>
+                  <div>Category:</div>
+                  <div>IBA:</div>
+                  <div>Serve in: </div>
+                </div>
+                <div>
+                  <div> {drink.strDrink}</div>
+                  <div> {drink.strCategory}</div>
+                  <div>{drink.strIBA === null ? "-" : drink.strIBA}</div>
+                  <div>{drink.strGlass}</div>
+                </div>
                 <div>Ingredients: </div>
                 <Ingredients
                   tag={"Ingredients: "}
