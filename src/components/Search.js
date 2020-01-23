@@ -46,7 +46,7 @@ export default function Search(props) {
         />
       </div>
       <div>
-        {selectedCocktail === "" ? (
+        {selectedCocktail === null ? (
           cocktails.data.drinks.map(cocktail => (
             <React.Fragment key={cocktail.idDrink}>
               <CocktailImage image={cocktail.strDrinkThumb} />
