@@ -4,6 +4,7 @@ import { ShoppingCartContext } from "../context/ShoppingCartContext";
 export default function ShoppingCart() {
   const { cart, handleCart } = useContext(ShoppingCartContext);
   console.log(cart);
+
   return !cart ? (
     <div></div>
   ) : (

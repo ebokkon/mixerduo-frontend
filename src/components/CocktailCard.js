@@ -13,10 +13,11 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
 
 export default function CocktailCard(props) {
-  const [cocktails, setCocktails] = useHttp(
-    "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic",
-    []
-  );
+  // const [cocktails, setCocktails] = useHttp(
+  //   "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic",
+  //   []
+  // );
+
   const useStyles = makeStyles({
     card: {
       maxWidth: 345,
@@ -28,33 +29,37 @@ export default function CocktailCard(props) {
     }
   });
   const classes = useStyles();
-  return cocktails === null ? (
+  console.log(props.cocktails);
+  return props.cocktails === null ? (
     <div>Loading...</div>
   ) : (
-    cocktails.data.drinks.map(cocktail => (
-      <Card className={classes.card} key={cocktail.idDrink}>
-        <CardActionArea>
-          <React.Fragment key={cocktail.idDrink}>
-            <CocktailImage image={cocktail.strDrinkThumb} />
-            <CardContent>
-              <CocktailItem item={cocktail} />
-            </CardContent>
-          </React.Fragment>
-        </CardActionArea>
-        <CardActions>
-          <FavoriteIcon size="small" color="primary" />
-          <ShareIcon size="small" color="primary"></ShareIcon>
-          <Link
-            className={classes.link}
-            to={`/cocktails/${cocktail.idDrink}`}
-            id={cocktail.idDrink}
-            size="small"
-            color="primary"
-          >
-            Learn More
-          </Link>
-        </CardActions>
-      </Card>
+    props.cocktails.map(cocktail => (
+      <div>
+        {console.log(cocktail)}
+        <Card className={classes.card} key={cocktail.idDrink}>
+          <CardActionArea>
+            <React.Fragment key={cocktail.idDrink}>
+              <CocktailImage image={cocktail.strDrinkThumb} />
+              <CardContent>
+                <CocktailItem item={cocktail} />
+              </CardContent>
+            </React.Fragment>
+          </CardActionArea>
+          <CardActions>
+            <FavoriteIcon size="small" color="primary" />
+            <ShareIcon size="small" color="primary"></ShareIcon>
+            <Link
+              className={classes.link}
+              to={`/cocktails/${cocktail.idDrink}`}
+              id={cocktail.idDrink}
+              size="small"
+              color="primary"
+            >
+              Learn More
+            </Link>
+          </CardActions>
+        </Card>
+      </div>
     ))
   );
 }

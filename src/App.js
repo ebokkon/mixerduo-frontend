@@ -9,8 +9,11 @@ import Search from "./components/Search";
 import Courses from "./components/Courses";
 import ShoppingCart from "./components/ShoppingCart";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import { useHttpAll } from "./hooks/HttpAll";
 
 function App() {
+  const [cocktails, setCocktails] = useHttpAll();
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -42,7 +45,7 @@ function App() {
             path="/cocktails"
             render={props => (
               <React.Fragment>
-                <CocktailCard />
+                <CocktailCard cocktails={cocktails} />
               </React.Fragment>
             )}
           ></Route>

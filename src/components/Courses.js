@@ -66,20 +66,29 @@ const tiers = [
   {
     title: "Beginners",
     price: "30",
-    description: ["Basic techniques", "", "Online Consultation"],
+    description: ["Basic techniques", "Garnishes", "Online Consultation"],
     buttonText: "Add to Cart"
   },
   {
     title: "Advanced",
     subheader: "Most popular",
     price: "50",
-    description: ["Competions Consultation", "Videos", "Email support"],
+    description: [
+      "Competions Consultation",
+      "10 Videos",
+      "Shaker BarConsultation"
+    ],
     buttonText: "Add to Cart"
   },
   {
     title: "Pro",
     price: "80",
-    description: ["50 users included", "Videos", "Email support"],
+    description: [
+      "Own infusions",
+      "Secrets of a Champion",
+      "30 videos",
+      "Shaker BarConsultation"
+    ],
     buttonText: "Add to Cart"
   }
 ];
@@ -99,19 +108,20 @@ const footers = [
 ];
 
 export default function Courses() {
-  const { cart, handleCart } = useContext(ShoppingCartContext);
+  const { cart, setCart } = useContext(ShoppingCartContext);
 
   const addToCart = (title, price) => {
-    console.log(cart);
+    console.log(price);
+    console.log(title);
     if (cart.hasOwnProperty(title)) {
       console.log(cart);
       cart.title = (parseInt(cart[title]) + parseInt(price)).toString();
-      handleCart(cart);
+      setCart(cart);
     } else {
-      const temp = { ...cart, title: price };
       //cart.push(temp);
-      // cart[title] = price;
-      handleCart(temp);
+      let temp = (cart[title] = price);
+      setCart(temp);
+      console.log(cart);
     }
   };
 
@@ -136,7 +146,8 @@ export default function Courses() {
           color="textSecondary"
           component="p"
         >
-          Learning is a lot fun!
+          Boost your bartending knowledge and get inspired by our Mixology
+          Course
         </Typography>
       </Container>
       {/* End hero unit */}
