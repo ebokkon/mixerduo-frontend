@@ -5,6 +5,7 @@ export function useHttpAll() {
   const [cocktails, setCocktails] = useState([]);
 
   useEffect(() => {
+    let temp = [];
     let letters = [
       "a",
       "b",
@@ -39,10 +40,10 @@ export function useHttpAll() {
           .get(
             `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
           )
-          .then(result => ({ ...result.data.drinks }))
+          .then(result => (temp = temp.concat(result.data.drinks)))
       )
     )
-      .then(result => setCocktails(result))
+      .then(result => setCocktails(temp))
       .catch(e => console.log(e));
   }, []);
 

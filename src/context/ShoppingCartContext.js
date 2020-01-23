@@ -7,12 +7,12 @@ export const ShoppingCartProvider = props => {
 
   const handleCart = cart => {
     setCart(cart);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    window.sessionStorage.setItem("cart", JSON.stringify(cart));
   };
 
   useEffect(() => {
-    const cart = localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart"))
+    const cart = window.sessionStorage.getItem("cart")
+      ? JSON.parse(window.sessionStorage.getItem("cart"))
       : [];
     setCart(cart);
   }, []);
