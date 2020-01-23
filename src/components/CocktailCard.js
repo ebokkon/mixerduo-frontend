@@ -36,34 +36,36 @@ export default function CocktailCard(props) {
       <CircularProgress />
     </div>
   ) : (
-    props.cocktails.map(cocktail => {
-      return cocktail ? (
-        <Card className={classes.card} key={cocktail.idDrink}>
-          <CardActionArea>
-            <React.Fragment key={cocktail.idDrink}>
-              <CocktailImage image={cocktail.strDrinkThumb} />
-              <CardContent>
-                <CocktailItem item={cocktail} />
-              </CardContent>
-            </React.Fragment>
-          </CardActionArea>
-          <CardActions>
-            <FavoriteIcon size="small" color="primary" />
-            <ShareIcon size="small" color="primary"></ShareIcon>
-            <Link
-              className={classes.link}
-              to={`/cocktails/${cocktail.idDrink}`}
-              id={cocktail.idDrink}
-              size="small"
-              color="primary"
-            >
-              Learn More
-            </Link>
-          </CardActions>
-        </Card>
-      ) : (
-        <div />
-      );
-    })
+    <div id="browsepage">
+      {props.cocktails.map(cocktail => {
+        return cocktail ? (
+          <Card className={classes.card} key={cocktail.idDrink}>
+            <CardActionArea>
+              <React.Fragment key={cocktail.idDrink}>
+                <CocktailImage image={cocktail.strDrinkThumb} />
+                <CardContent>
+                  <CocktailItem item={cocktail} />
+                </CardContent>
+              </React.Fragment>
+            </CardActionArea>
+            <CardActions>
+              <FavoriteIcon size="small" color="primary" />
+              <ShareIcon size="small" color="primary"></ShareIcon>
+              <Link
+                className={classes.link}
+                to={`/cocktails/${cocktail.idDrink}`}
+                id={cocktail.idDrink}
+                size="small"
+                color="primary"
+              >
+                Learn More
+              </Link>
+            </CardActions>
+          </Card>
+        ) : (
+          <div />
+        );
+      })}
+    </div>
   );
 }

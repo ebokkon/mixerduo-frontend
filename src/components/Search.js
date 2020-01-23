@@ -42,7 +42,7 @@ export default function Search(props) {
       <CircularProgress />
     </div>
   ) : (
-    <div>
+    <div id="searchpage">
       <div> {console.log(props.cocktails)}</div>
       <div style={{ margin: "15px", padding: "auto" }}>
         <Autocomplete
