@@ -2,6 +2,7 @@ import React from "react";
 import CocktailImage from "./CocktailImage";
 import CocktailItem from "./CocktailItem";
 import { useHttp } from "../../src/hooks/Http";
+import CircularProgress from "./CircularProgress";
 
 export default function CocktailCard(props) {
   const [cocktails, setCocktails] = useHttp(
@@ -10,7 +11,9 @@ export default function CocktailCard(props) {
   );
 
   return cocktails === null ? (
-    <div>Loading...</div>
+    <div>
+      <CircularProgress />
+    </div>
   ) : (
     cocktails.data.drinks.map(cocktail => (
       <React.Fragment key={cocktail.idDrink}>
