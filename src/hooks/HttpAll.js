@@ -43,7 +43,7 @@ export function useHttpAll() {
           .then(result => (temp = temp.concat(result.data.drinks)))
       )
     )
-      .then(result => setCocktails(temp))
+      .then(result => setCocktails(temp.filter(z => z !== null)))
       .catch(e => console.log(e));
   }, []);
 
