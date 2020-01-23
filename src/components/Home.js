@@ -1,10 +1,13 @@
 import React from "react";
+import drink2 from "../images/drink2.png";
+import ImageGridList from "./ImageGridList";
 
 export default function Home() {
   return (
     <div>
       <h1 style={h1}>WELCOME</h1>
-      <p></p>
+      {/* <img alt="cocktail" src={drink2}></img> */}
+      <ImageGridList />
     </div>
   );
 }
