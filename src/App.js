@@ -63,7 +63,7 @@ function App() {
             path="/search"
             render={props => (
               <React.Fragment>
-                <Search />
+                <Search cocktails={cocktails} />
               </React.Fragment>
             )}
           ></Route>

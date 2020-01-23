@@ -36,9 +36,9 @@ export default function CocktailCard(props) {
       <CircularProgress />
     </div>
   ) : (
-    props.cocktails.map(cocktail => {
-      return cocktail ? (
-        <div>
+    <div id="browsepage">
+      {props.cocktails.map(cocktail => {
+        return cocktail ? (
           <Card className={classes.card} key={cocktail.idDrink}>
             <CardActionArea>
               <React.Fragment key={cocktail.idDrink}>
@@ -62,10 +62,10 @@ export default function CocktailCard(props) {
               </Link>
             </CardActions>
           </Card>
-        </div>
-      ) : (
-        <div />
-      );
-    })
+        ) : (
+          <div />
+        );
+      })}
+    </div>
   );
 }
