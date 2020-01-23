@@ -11,6 +11,7 @@ import CardActions from "@material-ui/core/CardActions";
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
+import CircularProgress from "./CircularProgress";
 
 export default function CocktailCard(props) {
   // const [cocktails, setCocktails] = useHttp(
@@ -31,12 +32,13 @@ export default function CocktailCard(props) {
   const classes = useStyles();
 
   return props.cocktails === null ? (
-    <div>Loading...</div>
+    <div>
+      <CircularProgress />
+    </div>
   ) : (
     props.cocktails.map(cocktail => {
       return cocktail ? (
         <div>
-          {console.log(cocktail)}
           <Card className={classes.card} key={cocktail.idDrink}>
             <CardActionArea>
               <React.Fragment key={cocktail.idDrink}>

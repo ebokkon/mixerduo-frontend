@@ -7,6 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import CircularProgress from "./CircularProgress";
 
 const useStyles = makeStyles({
   card: {
@@ -43,29 +44,38 @@ export default function CocktailDetails(props) {
   };
 
   return cocktail === null ? (
-    <div>Loading...</div>
+    <div>
+      <CircularProgress />
+    </div>
   ) : (
     <div>
-      <Card>
-        <CocktailDetailsImage />
-      </Card>
-      <div>
-        {cocktail.data.drinks.map(drink => (
+      {cocktail.data.drinks.map(drink => (
+        <div>
+          <Card>
+            <div>
+              <CocktailDetailsImage image={drink.strDrinkThumb} />
+            </div>
+          </Card>
           <Card>
             <CardContent>
-              <div>Name: {drink.strDrink}</div>
-              <div>Category: {drink.strCategory}</div>
-              <div>IBA: {drink.strIBA === null ? "-" : drink.strIBA}</div>
-              <div>Serve in: {drink.strGlass}</div>
-              <div>Ingredients: </div>
-              <Ingredients tag={"Ingredients: "} data={getIngredients().ing} />
-              <div>Measurements: </div>
-              <Ingredients data={getIngredients().measure} />
-              <div>Instructions: {drink.strInstructions}</div>
+              <div>
+                <div>Name: {drink.strDrink}</div>
+                <div>Category: {drink.strCategory}</div>
+                <div>IBA: {drink.strIBA === null ? "-" : drink.strIBA}</div>
+                <div>Serve in: {drink.strGlass}</div>
+                <div>Ingredients: </div>
+                <Ingredients
+                  tag={"Ingredients: "}
+                  data={getIngredients().ing}
+                />
+                <div>Measurements: </div>
+                <Ingredients data={getIngredients().measure} />
+                <div>Instructions: {drink.strInstructions}</div>
+              </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
