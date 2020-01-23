@@ -172,9 +172,6 @@ export default function Courses() {
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ${tier.price}
                     </Typography>
-                    <Typography variant="h6" color="textSecondary">
-                      /mo
-                    </Typography>
                   </div>
                   <ul>
                     {tier.description.map(line => (
