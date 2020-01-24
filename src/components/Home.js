@@ -1,21 +1,22 @@
 import React from "react";
-import drink2 from "../images/drink2.png";
 import ImageGridList from "./ImageGridList";
+import ResponsiveFontSizes from "./ResponsiveFontSizes";
 
 export default function Home() {
   return (
     <div>
-      <h1 style={h1}>WELCOME</h1>
-      {/* <img alt="cocktail" src={drink2}></img> */}
+      <div style={h3}>
+        <ResponsiveFontSizes />
+      </div>
       <ImageGridList />
     </div>
   );
 }
 
-const h1 = {
-  color: "#fff",
+const h3 = {
+  color: "#394145",
   textAlign: "center",
   textShadow: "grey",
   fontSize: "40px",
-  marginTop: "50px"
+  margin: "50px 0"
 };

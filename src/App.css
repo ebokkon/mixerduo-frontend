@@ -7,10 +7,37 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
-  background: lightblue;
+  /* background: linear-gradient(0.25turn, #1d96f2, #cae2e6, #36509c); */
+  background: linear-gradient(0.25turn, #0b85b5, #cae2e6, #36509c);
 }
 
 #browsepage,
 #searchpage {
   text-align: center;
+}
+
+#grid {
+  position: relative;
+  margin: 0.5em;
+  border: solid 5px transparent;
+  background: #3e4377;
+}
+
+#grid:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: solid 10px #36509c;
+  margin: -15px;
+  z-index: -1;
+  transition: transform 0.6s linear;
+  transform: scale(0.97, 0.93);
+}
+
+#grid:hover::after {
+  transform: scale(1, 1);
 }
