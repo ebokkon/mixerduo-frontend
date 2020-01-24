@@ -9,21 +9,21 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "./CircularProgress";
 import FlippyImage from "./FlippyImage";
+import Flippy, { FrontSide, BackSide } from "react-flippy";
 
 const useStyles = makeStyles({
   cardWithImage: {
-    width: 457,
+    width: 650,
+    height: 650,
     margin: "auto",
     position: "relative"
   },
   cardWithText: {
-    width: 670,
-    minHeight: 460,
+    width: 616,
+    height: 616,
     margin: "auto",
     position: "relative",
-    padding: "auto",
-    background: "#c7c1c1",
-    justifyContent: "flex-end"
+    background: "#c7c1c1"
   },
   title: {
     fontSize: 14
@@ -78,35 +78,60 @@ export default function CocktailDetails(props) {
       {cocktail.data.drinks.map(drink => (
         <div className={classes.cardsContainer}>
           <Card className={classes.cardWithImage}>
-            <FlippyImage image={drink.strDrinkThumb} />
-          </Card>
-          <Card className={classes.cardWithText}>
-            <CardContent>
-              <div>
-                <Typography>
-                  <div className={classes.titleText}>NAME: </div>
-                  <div className={classes.text}>{drink.strDrink}</div>
-                  <div className={classes.titleText}>CATEGORY: </div>
-                  <div className={classes.text}>{drink.strCategory}</div>
-                  <div className={classes.titleText}>IBA: </div>
-                  <div className={classes.text}>
-                    {drink.strIBA === null ? "-" : drink.strIBA}
-                  </div>
-                  <div className={classes.titleText}>SERVE IN: </div>
-                  <div className={classes.text}>{drink.strGlass}</div>
-                </Typography>
+            <Flippy
+              flipOnHover={false}
+              flipOnClick={true}
+              flipDirection="horizontal"
+              //   ref={r => (this.flippy = r)}
+              style={{
+                width: 650,
+                height: 650,
+                background:
+                  "linear-gradient(0.25turn, #b5d5e8, #cae2e6, #b6bfe0)"
+              }}
+            >
+              <FrontSide
+                style={{
+                  background: "linear-gradient(to left, grey, white)"
+                }}
+              >
+                <CocktailDetailsImage image={drink.strDrinkThumb} />
+              </FrontSide>
+              <BackSide
+                style={{ background: "linear-gradient(to left, grey, white)" }}
+              >
+                <Card className={classes.cardWithText}>
+                  <CardContent>
+                    <div>
+                      <Typography>
+                        <div className={classes.titleText}>NAME: </div>
+                        <div className={classes.text}>{drink.strDrink}</div>
+                        <div className={classes.titleText}>CATEGORY: </div>
+                        <div className={classes.text}>{drink.strCategory}</div>
+                        <div className={classes.titleText}>IBA: </div>
+                        <div className={classes.text}>
+                          {drink.strIBA === null ? "-" : drink.strIBA}
+                        </div>
+                        <div className={classes.titleText}>SERVE IN: </div>
+                        <div className={classes.text}>{drink.strGlass}</div>
+                      </Typography>
 
-                <div className={classes.titleText}>INGREDIENTS: </div>
-                <Ingredients
-                  tag={"Ingredients: "}
-                  data={getIngredients().ing}
-                />
-                <div className={classes.titleText}>MEASUREMENTS: </div>
-                <Ingredients data={getIngredients().measure} />
-                <div className={classes.titleText}>INSTRUCTIONS: </div>
-                <div className={classes.text}>{drink.strInstructions}</div>
-              </div>
-            </CardContent>
+                      <div className={classes.titleText}>INGREDIENTS: </div>
+                      <Ingredients
+                        tag={"Ingredients: "}
+                        data={getIngredients().ing}
+                      />
+                      <div className={classes.titleText}>MEASUREMENTS: </div>
+                      <Ingredients data={getIngredients().measure} />
+                      <div className={classes.titleText}>INSTRUCTIONS: </div>
+                      <div className={classes.text}>
+                        {drink.strInstructions}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </BackSide>
+            </Flippy>
           </Card>
         </div>
       ))}
