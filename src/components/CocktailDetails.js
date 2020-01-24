@@ -8,15 +8,20 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "./CircularProgress";
+import FlippyImage from "./FlippyImage";
 
 const useStyles = makeStyles({
   cardWithImage: {
-    width: 430,
-    margin: 10
+    width: 457,
+    margin: "auto",
+    position: "relative"
   },
   cardWithText: {
-    width: 500,
-    margin: 20
+    width: 660,
+    height: 460,
+    margin: "auto",
+    position: "relative",
+    padding: "auto"
   },
   title: {
     fontSize: 14
@@ -26,7 +31,10 @@ const useStyles = makeStyles({
   },
   cardsContainer: {
     position: "relative",
-    flex: "wrap"
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginTop: "30px"
   }
 });
 
@@ -57,13 +65,11 @@ export default function CocktailDetails(props) {
       <CircularProgress />
     </div>
   ) : (
-    <div className={classes.cardsContainer}>
+    <div>
       {cocktail.data.drinks.map(drink => (
-        <div>
+        <div className={classes.cardsContainer}>
           <Card className={classes.cardWithImage}>
-            <div>
-              <CocktailDetailsImage image={drink.strDrinkThumb} />
-            </div>
+            <FlippyImage image={drink.strDrinkThumb} />
           </Card>
           <Card className={classes.cardWithText}>
             <CardContent>
