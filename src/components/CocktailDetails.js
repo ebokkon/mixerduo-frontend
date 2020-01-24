@@ -17,11 +17,13 @@ const useStyles = makeStyles({
     position: "relative"
   },
   cardWithText: {
-    width: 660,
-    height: 460,
+    width: 670,
+    minHeight: 460,
     margin: "auto",
     position: "relative",
-    padding: "auto"
+    padding: "auto",
+    background: "#c7c1c1",
+    justifyContent: "flex-end"
   },
   title: {
     fontSize: 14
@@ -35,6 +37,13 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginTop: "30px"
+  },
+  titleText: {
+    color: "blue"
+  },
+  text: {
+    textAlign: "left",
+    background: "#c7c1c1"
   }
 });
 
@@ -74,26 +83,28 @@ export default function CocktailDetails(props) {
           <Card className={classes.cardWithText}>
             <CardContent>
               <div>
-                <div>
-                  <div>Name:</div>
-                  <div>Category:</div>
-                  <div>IBA:</div>
-                  <div>Serve in: </div>
-                </div>
-                <div>
-                  <div> {drink.strDrink}</div>
-                  <div> {drink.strCategory}</div>
-                  <div>{drink.strIBA === null ? "-" : drink.strIBA}</div>
-                  <div>{drink.strGlass}</div>
-                </div>
-                <div>Ingredients: </div>
+                <Typography>
+                  <div className={classes.titleText}>NAME: </div>
+                  <div className={classes.text}>{drink.strDrink}</div>
+                  <div className={classes.titleText}>CATEGORY: </div>
+                  <div className={classes.text}>{drink.strCategory}</div>
+                  <div className={classes.titleText}>IBA: </div>
+                  <div className={classes.text}>
+                    {drink.strIBA === null ? "-" : drink.strIBA}
+                  </div>
+                  <div className={classes.titleText}>SERVE IN: </div>
+                  <div className={classes.text}>{drink.strGlass}</div>
+                </Typography>
+
+                <div className={classes.titleText}>INGREDIENTS: </div>
                 <Ingredients
                   tag={"Ingredients: "}
                   data={getIngredients().ing}
                 />
-                <div>Measurements: </div>
+                <div className={classes.titleText}>MEASUREMENTS: </div>
                 <Ingredients data={getIngredients().measure} />
-                <div>Instructions: {drink.strInstructions}</div>
+                <div className={classes.titleText}>INSTRUCTIONS: </div>
+                <div className={classes.text}>{drink.strInstructions}</div>
               </div>
             </CardContent>
           </Card>
