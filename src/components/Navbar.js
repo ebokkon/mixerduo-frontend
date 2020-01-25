@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import cocktailLogo from "../images/cocktailLogo.png";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -75,7 +76,8 @@ export default function Navbar() {
           noWrap
           className={classes.toolbarTitle}
         >
-          MixerDuo Co
+          <img src={cocktailLogo} alt="" style={{ maxWidth: "30px" }} />
+          MixerDuo Co{" "}
         </Typography>
         <nav>
           <Link

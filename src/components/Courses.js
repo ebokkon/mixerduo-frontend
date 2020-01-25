@@ -42,7 +42,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor:
       theme.palette.type === "dark"
         ? theme.palette.grey[700]
-        : theme.palette.grey[200]
+        : theme.palette.grey[200],
+    minHeight: 100
   },
   cardPricing: {
     display: "flex",
@@ -66,7 +67,12 @@ const tiers = [
   {
     title: "Beginners",
     price: "30",
-    description: ["Basic techniques", "Garnishes", "Online Consultation"],
+    description: [
+      "Ingredients introduction",
+      "Basic techniques",
+      "Garnishes",
+      "Online Consultation"
+    ],
     buttonText: "Add to Cart"
   },
   {
@@ -75,6 +81,7 @@ const tiers = [
     price: "50",
     description: [
       "Competions Consultation",
+      "Exotic ingredients",
       "10 Videos",
       "Shaker BarConsultation"
     ],

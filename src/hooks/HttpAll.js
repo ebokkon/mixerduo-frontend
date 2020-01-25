@@ -47,20 +47,5 @@ export function useHttpAll() {
       .catch(e => console.log(e));
   }, []);
 
-  //   try {
-  //     async function fetchData(letter) {
-  //       const response = await axios(
-  //         `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
-  //       );
-  //       setCocktails(...cocktails, response.data.drinks);
-  //     }
-  //     for (let letter in letters) {
-  //       fetchData(letter);
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, []);
-
   return [cocktails, setCocktails];
 }
