@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     height: 616,
     margin: "auto",
     position: "relative",
-    background: "#c7c1c1"
+    background: "lightgrey"
   },
   title: {
     fontSize: 14
@@ -43,7 +43,7 @@ const useStyles = makeStyles({
   },
   text: {
     textAlign: "left",
-    background: "#c7c1c1"
+    background: "lightgrey"
   }
 });
 
@@ -85,20 +85,22 @@ export default function CocktailDetails(props) {
               //   ref={r => (this.flippy = r)}
               style={{
                 width: 650,
-                height: 650,
-                background:
-                  "linear-gradient(0.25turn, #b5d5e8, #cae2e6, #b6bfe0)"
+                height: 650
+                // background:
+                // "linear-gradient(0.25turn, #b5d5e8, #cae2e6, #b6bfe0)"
               }}
             >
               <FrontSide
-                style={{
-                  background: "linear-gradient(to left, grey, white)"
-                }}
+                style={
+                  {
+                    // background: "linear-gradient(to left, grey, white)"
+                  }
+                }
               >
                 <CocktailDetailsImage image={drink.strDrinkThumb} />
               </FrontSide>
               <BackSide
-                style={{ background: "linear-gradient(to left, grey, white)" }}
+              // style={{ background: "linear-gradient(to left, grey, white)" }}
               >
                 <Card className={classes.cardWithText}>
                   <CardContent>
