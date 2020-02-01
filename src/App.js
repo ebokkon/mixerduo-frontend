@@ -21,36 +21,36 @@ function App() {
           <Navbar />
         </header>
         <ShoppingCartProvider>
-          <Route exact path="/" component={Home}></Route>
-          <Route exact path="/courses" component={Courses}></Route>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/courses" component={Courses}/>
           <Route
             exact
             path="/cocktails"
             render={props => (
-              <React.Fragment>
-                <CocktailCard cocktails={cocktails} />
-              </React.Fragment>
+                <React.Fragment>
+                    <CocktailCard cocktails={cocktails}/>
+                </React.Fragment>
             )}
-          ></Route>
+            />
           <Route
             exact
             path={`/cocktails/:id`}
             render={props => (
-              <React.Fragment>
-                <CocktailDetails id={props} />
-              </React.Fragment>
+                <React.Fragment>
+                    <CocktailDetails id={props}/>
+                </React.Fragment>
             )}
-          ></Route>
+            />
           <Route
             exact
             path="/search"
             render={props => (
-              <React.Fragment>
-                <Search cocktails={cocktails} />
-              </React.Fragment>
+                <React.Fragment>
+                    <Search cocktails={cocktails}/>
+                </React.Fragment>
             )}
-          ></Route>
-          <Route exact path="/shoppingcart" component={ShoppingCart}></Route>
+            />
+          <Route exact path="/shoppingcart" component={ShoppingCart}/>
         </ShoppingCartProvider>
       </div>
     </BrowserRouter>
