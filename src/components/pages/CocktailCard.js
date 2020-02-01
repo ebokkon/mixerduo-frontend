@@ -1,7 +1,7 @@
 import React from "react";
-import CocktailImage from "./CocktailImage";
-import CocktailItem from "./CocktailItem";
-import { useHttp } from "../../src/hooks/Http";
+import CocktailImage from "./cocktailunits/CocktailImage";
+import CocktailItem from "./cocktailunits/CocktailItem";
+import { useHttp } from "../../hooks/Http";
 import { CardContent } from "@material-ui/core";
 import { CardActionArea } from "@material-ui/core";
 import { Card } from "@material-ui/core";
@@ -11,7 +11,7 @@ import CardActions from "@material-ui/core/CardActions";
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
-import CircularProgress from "./CircularProgress";
+import CircularProgress from "../CircularProgress";
 
 export default function CocktailCard(props) {
   // const [cocktails, setCocktails] = useHttp(

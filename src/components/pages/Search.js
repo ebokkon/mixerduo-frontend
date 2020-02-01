@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import CircularProgress from "./CircularProgress";
+import CircularProgress from "../CircularProgress";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import CocktailImage from "./CocktailImage";
-import CocktailItem from "./CocktailItem";
+import CocktailImage from "./cocktailunits/CocktailImage";
+import CocktailItem from "./cocktailunits/CocktailItem";
 import CardActions from "@material-ui/core/CardActions";
 import { Card } from "@material-ui/core";
 import { CardContent } from "@material-ui/core";

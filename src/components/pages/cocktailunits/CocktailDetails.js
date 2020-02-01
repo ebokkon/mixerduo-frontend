@@ -1,5 +1,5 @@
 import React from "react";
-import { useHttp } from "../hooks/Http";
+import { useHttp } from "../../../hooks/Http";
 import CocktailDetailsImage from "./CocktailDetailsImage";
 import Ingredients from "./Ingredients";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,7 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import CircularProgress from "./CircularProgress";
+import CircularProgress from "../../CircularProgress";
 import FlippyImage from "./FlippyImage";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 

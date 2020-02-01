@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ShoppingCartContext } from "../context/ShoppingCartContext";
-import SimpleTable from "./SimpleTable";
+import { ShoppingCartContext } from "../../context/ShoppingCartContext";
+import SimpleTable from "./shoppingcartunits/SimpleTable";
 
 export default function ShoppingCart() {
   const { cart, handleCart } = useContext(ShoppingCartContext);
