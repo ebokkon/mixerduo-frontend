@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import CocktailCard from "./components/CocktailCard";
-import CocktailDetails from "./components/CocktailDetails";
+import Home from "./components/pages/Home";
+import CocktailCard from "./components/pages/CocktailCard";
+import CocktailDetails from "./components/pages/cocktailunits/CocktailDetails";
 import "./App.css";
-import Search from "./components/Search";
-import Courses from "./components/Courses";
-import ShoppingCart from "./components/ShoppingCart";
+import Search from "./components/pages/Search";
+import Courses from "./components/pages/Courses";
+import ShoppingCart from "./components/pages/ShoppingCart";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { useHttpAll } from "./hooks/HttpAll";
 
@@ -21,7 +21,7 @@ function App() {
           <Navbar />
         </header>
         <ShoppingCartProvider>
-          \<Route exact path="/" component={Home}></Route>
+          <Route exact path="/" component={Home}></Route>
           <Route exact path="/courses" component={Courses}></Route>
           <Route
             exact
