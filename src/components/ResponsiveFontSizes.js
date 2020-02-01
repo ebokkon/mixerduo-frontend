@@ -9,11 +9,11 @@ import Typography from "@material-ui/core/Typography";
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
-export default function ResponsiveFontSizes() {
+export default function ResponsiveFontSizes(props) {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Typography variant="h3">WELCOME</Typography>
+        <Typography variant={props.variant}>{props.text}</Typography>
       </ThemeProvider>
     </div>
   );

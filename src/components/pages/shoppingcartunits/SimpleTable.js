@@ -2,18 +2,23 @@ import React from "react";
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import ResponsiveFontSizes from "../../ResponsiveFontSizes";
 
 export default function SimpleTable(props) {
   const useStyles = makeStyles({
     table: {
-      width: 550
+      maxWidth: 550
     },
-    tableHeader: { fontWeight: "bold", fontSize: 20 }
+    tableHeader: { fontWeight: "bold", fontSize: 20 },
+    tableTitle : {
+          textAlign: "center",
+          color: "white",
+          margin: "50px 0"
+      }
   });
   const classes = useStyles();
 
@@ -32,20 +37,12 @@ export default function SimpleTable(props) {
 
   return (
     <div>
-      <h1
-        style={{
-          textAlign: "center",
-          color: "white",
-          marginBottom: 20,
-          marginTop: 20
-        }}
-      >
-        Ordered Items:
-      </h1>
-
+        <div className={classes.tableTitle}>
+            <ResponsiveFontSizes variant={"h3"} text={"Ordered Items: "}/>
+        </div>
       <TableContainer
         component={Paper}
-        style={{ width: 550, margin: "0 auto" }}
+        style={{ maxWidth: 550, margin: "0 auto" }}
       >
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
