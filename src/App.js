@@ -20,10 +20,9 @@ function App() {
         <header className="App-header">
           <Navbar />
         </header>
-        <Route exact path="/" component={Home}></Route>
         <ShoppingCartProvider>
+          \<Route exact path="/" component={Home}></Route>
           <Route exact path="/courses" component={Courses}></Route>
-
           <Route
             exact
             path="/cocktails"
@@ -51,7 +50,6 @@ function App() {
               </React.Fragment>
             )}
           ></Route>
-
           <Route exact path="/shoppingcart" component={ShoppingCart}></Route>
         </ShoppingCartProvider>
       </div>
