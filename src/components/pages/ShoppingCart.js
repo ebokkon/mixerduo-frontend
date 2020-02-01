@@ -6,18 +6,18 @@ export default function ShoppingCart() {
   const { cart, handleCart } = useContext(ShoppingCartContext);
 
   return cart.length === 0 ? (
-    <div
-      style={{
-        textAlign: "center",
-        fontSize: 40,
-        color: "white",
-        fontWeight: "bold",
-        margin: 50
-      }}
-    >
+    <div style={cartMsg}>
       There are no items in your cart, yet!
     </div>
   ) : (
     <SimpleTable cart={cart} />
   );
 }
+
+const cartMsg = {
+    textAlign: "center",
+    fontSize: 40,
+    color: "white",
+    fontWeight: "bold",
+    margin: 50
+};
