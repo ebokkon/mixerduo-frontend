@@ -3,6 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
+import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import cocktailLogo from "../images/cocktailLogo.png";
@@ -43,7 +44,8 @@ export default function Navbar() {
         </Typography>
         <nav>
           <Link
-            href="/"
+            to="/"
+            component={RouterLink}
             variant="button"
             color="textPrimary"
             className={classes.link}
@@ -51,7 +53,8 @@ export default function Navbar() {
             Home
           </Link>
           <Link
-            href="/courses"
+            to="/courses"
+            component={RouterLink}
             variant="button"
             color="textPrimary"
             className={classes.link}
@@ -59,7 +62,8 @@ export default function Navbar() {
             Courses
           </Link>
           <Link
-            href="/cocktails"
+            to="/cocktails"
+            component={RouterLink}
             variant="button"
             color="textPrimary"
             className={classes.link}
@@ -67,7 +71,8 @@ export default function Navbar() {
             Browse Cocktails
           </Link>
           <Link
-            href="/search"
+            to="/search"
+            component={RouterLink}
             variant="button"
             color="textPrimary"
             className={classes.link}
@@ -75,12 +80,11 @@ export default function Navbar() {
             Search
           </Link>
         </nav>
-        <ShoppingCartIcon
-          style={{ cursor: "pointer" }}
-          onClick={event => (window.location.href = "/shoppingcart")}
-        >
-          ShoppingCart
-        </ShoppingCartIcon>
+        <Link component={RouterLink} to="/shoppingcart">
+          <ShoppingCartIcon style={{ cursor: "pointer" }}>
+            ShoppingCart
+          </ShoppingCartIcon>
+        </Link>
       </Toolbar>
     </AppBar>
   );

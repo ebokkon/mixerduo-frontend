@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import CircularProgress from "../CircularProgress";
 import TextField from "@material-ui/core/TextField";
@@ -12,18 +12,26 @@ import { CardActionArea } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
+import { CocktailsListContext } from "../../context/CocktailsListContext";
 
-export default function Search(props) {
-  // const [cocktails, setCocktails] = useHttp(
-  //   "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic",
-  //   []
-  // );
-
+export default function Search() {
   const [selectedCocktail, setSelectedCocktail] = useState(null);
+  const { cocktails } = useContext(CocktailsListContext);
+  // const [search, setSearch] = useState("");
+  // const [filteredCocktails, setFilteredCocktails] = useState([]);
 
   const handleOnchange = (event, value) => {
     value === null ? setSelectedCocktail(null) : setSelectedCocktail(value);
   };
+
+  // const handleSearch = (event, value) => {
+  //   setSearch(event.target.value);
+  //   setFilteredCocktails(
+  //     cocktails.filter(c =>
+  //       c.strDrink.match(new RegExp(event.target.value, "gi"))
+  //     )
+  //   );
+  // };
 
   const useStyles = makeStyles({
     card: {
@@ -37,17 +45,12 @@ export default function Search(props) {
   });
   const classes = useStyles();
 
-  return props.cocktails === null ? (
-    <div>
-      <CircularProgress />
-    </div>
-  ) : (
+  return (
     <div id="searchpage">
-      <div> {console.log(props.cocktails)}</div>
       <div style={{ margin: "15px", padding: "auto" }}>
         <Autocomplete
           id="cocktail-select"
-          options={props.cocktails}
+          options={cocktails}
           getOptionLabel={option => option.strDrink}
           style={{ width: 400 }}
           onChange={(event, value) => handleOnchange(event, value)}
@@ -60,10 +63,11 @@ export default function Search(props) {
             />
           )}
         />
+        {/* <TextField value={search} onChange={handleSearch} /> */}
       </div>
       <div>
         {selectedCocktail === null ? (
-          props.cocktails.map(cocktail => (
+          cocktails.map(cocktail => (
             <Card className={classes.card} key={cocktail.idDrink}>
               <CardActionArea key={cocktail.idDrink}>
                 <CocktailImage image={cocktail.strDrinkThumb} />

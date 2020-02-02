@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import CocktailImage from "./cocktailunits/CocktailImage";
 import CocktailItem from "./cocktailunits/CocktailItem";
-import { useHttp } from "../../hooks/Http";
 import { CardContent } from "@material-ui/core";
 import { CardActionArea } from "@material-ui/core";
 import { Card } from "@material-ui/core";
@@ -11,12 +10,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
 import CircularProgress from "../CircularProgress";
+import { CocktailsListContext } from "../../context/CocktailsListContext";
 
-export default function CocktailCard(props) {
-  // const [cocktails, setCocktails] = useHttp(
-  //   "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic",
-  //   []
-  // );
+export default function CocktailCard() {
+  const { cocktails } = useContext(CocktailsListContext);
 
   const useStyles = makeStyles({
     card: {
@@ -31,13 +28,13 @@ export default function CocktailCard(props) {
 
   const classes = useStyles();
 
-  return props.cocktails === null ? (
+  return cocktails === null ? (
     <div>
       <CircularProgress />
     </div>
   ) : (
     <div id="browsepage">
-      {props.cocktails.map(cocktail => {
+      {cocktails.map(cocktail => {
         return cocktail ? (
           <Card className={classes.card} key={cocktail.idDrink}>
             <CardActionArea>
