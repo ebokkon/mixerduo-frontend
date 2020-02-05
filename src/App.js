@@ -1,25 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import { CocktailsListProvider } from "./context/CocktailsListContext";
+import "./App.css";
+
+import Navbar from "./components/Navbar";
+import Home from "./components/pages/Home";
+import CocktailCard from "./components/pages/CocktailCard";
+import CocktailDetails from "./components/pages/cocktailunits/CocktailDetails";
+import Search from "./components/pages/Search";
+import Courses from "./components/pages/Courses";
+import ShoppingCart from "./components/pages/ShoppingCart";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ShoppingCartProvider>
+      <CocktailsListProvider>
+        <BrowserRouter>
+          <div className="App">
+            <header className="App-header">
+              <Navbar />
+            </header>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/courses" component={Courses} />
+            <Route
+              exact
+              path="/cocktails"
+              render={props => (
+                <React.Fragment>
+                  <CocktailCard />
+                </React.Fragment>
+              )}
+            />
+            <Route
+              exact
+              path={`/cocktails/:id`}
+              render={props => (
+                <React.Fragment>
+                  <CocktailDetails id={props} />
+                </React.Fragment>
+              )}
+            />
+            <Route
+              exact
+              path="/search"
+              render={props => (
+                <React.Fragment>
+                  <Search />
+                </React.Fragment>
+              )}
+            />
+            <Route exact path="/shoppingcart" component={ShoppingCart} />
+          </div>
+        </BrowserRouter>
+      </CocktailsListProvider>
+    </ShoppingCartProvider>
   );
 }
 
