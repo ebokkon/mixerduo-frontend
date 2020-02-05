@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 });
 
 export default function FlippyCard(props) {
-  console.log(props);
+
 
   const classes = useStyles();
 

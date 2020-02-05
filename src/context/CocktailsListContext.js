@@ -10,8 +10,6 @@ export const CocktailsListProvider = props => {
     axios.get("http://localhost:8080").then(response => setCocktails(response.data))
   }, []);
 
-  console.log(cocktails);
-
   return (
     <CocktailsListContext.Provider value={{ cocktails, setCocktails }}>
       {props.children}

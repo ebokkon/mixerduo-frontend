@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
@@ -35,6 +36,8 @@ export default function SimpleTable(props) {
     }
   };
 
+  const [count, setCount] = useState();
+
   return (
     <div>
         <div className={classes.tableTitle}>
@@ -52,7 +55,7 @@ export default function SimpleTable(props) {
               <TableCell className={classes.tableHeader}>Total Price</TableCell>
             </TableRow>
           </TableHead>
-
+          <TableBody>
           {props.cart.map(item => {
             return (
               <TableRow>
@@ -69,6 +72,7 @@ export default function SimpleTable(props) {
               </TableRow>
             );
           })}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>
