@@ -8,6 +8,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import ResponsiveFontSizes from "../../ResponsiveFontSizes";
+import axios from "axios";
 
 export default function SimpleTable(props) {
   const useStyles = makeStyles({
@@ -36,7 +37,10 @@ export default function SimpleTable(props) {
     }
   };
 
-  const [count, setCount] = useState();
+  const increaseCart = (title) => {
+      axios.put(`htttp://localhost:8080/add-to-cart/${title}`)
+          .then(response => response)
+  };
 
   return (
     <div>
@@ -68,6 +72,9 @@ export default function SimpleTable(props) {
                 </TableCell>
                 <TableCell align="center">
                   {item[Object.keys(item)[0]]}
+                </TableCell>
+                <TableCell>
+                    <button onClick={() => increaseCart(Object.keys(item)[0])}>Add</button>
                 </TableCell>
               </TableRow>
             );
