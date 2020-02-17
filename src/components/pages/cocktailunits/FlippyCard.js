@@ -41,11 +41,11 @@ export default function FlippyCard(props) {
     let cocktailArray = props;
     let ingredients = [];
     let measurements = [];
-    for (let key in cocktailArray) {
-      if (key.startsWith("strIngredient") && cocktailArray[key] !== null) {
-        ingredients.push(cocktailArray[key]);
-      } else if (key.startsWith("strMeasure") && cocktailArray[key] !== null) {
-        measurements.push(cocktailArray[key]);
+    for (let key in cocktailArray.drink) {
+      if (key.startsWith("strIngredient") && cocktailArray.drink[key] !== null) {
+        ingredients.push(cocktailArray.drink[key]);
+      } else if (key.startsWith("strMeasure") && cocktailArray.drink[key] !== null) {
+        measurements.push(cocktailArray.drink[key]);
       }
     }
     return { ing: ingredients, measure: measurements };

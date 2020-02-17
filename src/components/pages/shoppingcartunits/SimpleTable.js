@@ -29,7 +29,7 @@ export default function SimpleTable(props) {
   const classes = useStyles();
 
   const quantityCalculation = courseTitle => {
-    switch (courseTitle.key) {
+    switch (courseTitle) {
       case "Advanced":
         return 50;
       case "Beginners":
@@ -85,7 +85,7 @@ export default function SimpleTable(props) {
                 </TableCell>
                 <TableCell align="center">
                   {cart[key] *
-                  quantityCalculation({key})}
+                  quantityCalculation(key)}
                 </TableCell>
                 <TableCell>
                     <button onClick={() => decreaseCart(key)}> - </button>
