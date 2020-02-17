@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -13,6 +13,7 @@ import {ShoppingCartContext} from "../../../context/ShoppingCartContext";
 
 export default function SimpleTable(props) {
     const { cart, setCart } = useContext(ShoppingCartContext);
+
 
   const useStyles = makeStyles({
     table: {
@@ -40,20 +41,20 @@ export default function SimpleTable(props) {
     }
   };
 
-  const increaseCart = (title) => {
-      axios.get(`http://localhost:8080/increase-in-cart/${title}`)
-          .then(response => setCart(response.data));
-  };
-
-  const decreaseCart = (title) => {
-      axios.get(`http://localhost:8080/decrease-in-cart/${title}`)
-          .then(response => setCart(response.data))
-  };
-
-  const removeFromCart = (title) => {
-      axios.get(`http://localhost:8080/remove-from-cart/${title}`)
-          .then(response => setCart(response.data))
-  };
+  // const increaseCart = (title) => {
+  //     axios.get(`http://localhost:8080/increase-in-cart/${title}`)
+  //         .then(response => setCart(response.data));
+  // };
+  //
+  // const decreaseCart = (title) => {
+  //     axios.get(`http://localhost:8080/decrease-in-cart/${title}`)
+  //         .then(response => setCart(response.data))
+  // };
+  //
+  // const removeFromCart = (title) => {
+  //     axios.get(`http://localhost:8080/remove-from-cart/${title}`)
+  //         .then(response => setCart(response.data))
+  // };
 
   return (
     <div>
@@ -86,11 +87,11 @@ export default function SimpleTable(props) {
                   {cart[key] *
                   quantityCalculation({key})}
                 </TableCell>
-                <TableCell>
-                    <button onClick={() => decreaseCart({key})}> - </button>
-                    <button onClick={() => increaseCart({key})}> + </button>
-                    <button onClick={() => removeFromCart({key})}>Remove</button>
-                </TableCell>
+                {/*<TableCell>*/}
+                {/*    <button onClick={() => decreaseCart({key})}> - </button>*/}
+                {/*    <button onClick={() => increaseCart({key})}> + </button>*/}
+                {/*    <button onClick={() => removeFromCart({key})}>Remove</button>*/}
+                {/*</TableCell>*/}
               </TableRow>
             );
           })}
