@@ -88,9 +88,9 @@ export default function SimpleTable(props) {
                   quantityCalculation({key})}
                 </TableCell>
                 <TableCell>
-                    <button onClick={() => decreaseCart({key})}> - </button>
-                    <button onClick={() => increaseCart({key})}> + </button>
-                    <button onClick={() => removeFromCart({key})}>Remove</button>
+                    <button onClick={() => decreaseCart(key)}> - </button>
+                    <button onClick={() => increaseCart(key)}> + </button>
+                    <button onClick={() => removeFromCart(key)}>Remove</button>
                 </TableCell>
               </TableRow>
             );
