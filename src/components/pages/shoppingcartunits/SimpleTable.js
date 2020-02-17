@@ -29,7 +29,7 @@ export default function SimpleTable(props) {
   const classes = useStyles();
 
   const quantityCalculation = courseTitle => {
-    switch (courseTitle.key) {
+    switch (courseTitle) {
       case "Advanced":
         return 50;
       case "Beginners":
@@ -41,20 +41,20 @@ export default function SimpleTable(props) {
     }
   };
 
-  // const increaseCart = (title) => {
-  //     axios.get(`http://localhost:8080/increase-in-cart/${title}`)
-  //         .then(response => setCart(response.data));
-  // };
-  //
-  // const decreaseCart = (title) => {
-  //     axios.get(`http://localhost:8080/decrease-in-cart/${title}`)
-  //         .then(response => setCart(response.data))
-  // };
-  //
-  // const removeFromCart = (title) => {
-  //     axios.get(`http://localhost:8080/remove-from-cart/${title}`)
-  //         .then(response => setCart(response.data))
-  // };
+  const increaseCart = (title) => {
+      axios.get(`http://localhost:8080/increase-in-cart/${title}`)
+          .then(response => setCart(response.data));
+  };
+
+  const decreaseCart = (title) => {
+      axios.get(`http://localhost:8080/decrease-in-cart/${title}`)
+          .then(response => setCart(response.data))
+  };
+
+  const removeFromCart = (title) => {
+      axios.get(`http://localhost:8080/remove-from-cart/${title}`)
+          .then(response => setCart(response.data))
+  };
 
   return (
     <div>
@@ -85,13 +85,13 @@ export default function SimpleTable(props) {
                 </TableCell>
                 <TableCell align="center">
                   {cart[key] *
-                  quantityCalculation({key})}
+                  quantityCalculation(key)}
                 </TableCell>
-                {/*<TableCell>*/}
-                {/*    <button onClick={() => decreaseCart({key})}> - </button>*/}
-                {/*    <button onClick={() => increaseCart({key})}> + </button>*/}
-                {/*    <button onClick={() => removeFromCart({key})}>Remove</button>*/}
-                {/*</TableCell>*/}
+                <TableCell>
+                    <button onClick={() => decreaseCart(key)}> - </button>
+                    <button onClick={() => increaseCart(key)}> + </button>
+                    <button onClick={() => removeFromCart(key)}>Remove</button>
+                </TableCell>
               </TableRow>
             );
           })}
