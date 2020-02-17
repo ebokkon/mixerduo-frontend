@@ -29,13 +29,13 @@ const useStyles = makeStyles({
 export default function CocktailDetails(props) {
   const classes = useStyles();
 
-  const [cocktail, setCocktail] = useHttp(
-    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${props.id.match.params.id}`,
+  const [cocktail] = useHttp(
+    `http://localhost:8080/cocktails/${props.id.match.params.id}`,
     []
   );
 
   const getIngredients = () => {
-    let cocktailArray = cocktail.data.drinks[0];
+    let cocktailArray = cocktail;
     let ingredients = [];
     let measurements = [];
     for (let key in cocktailArray) {
@@ -54,13 +54,11 @@ export default function CocktailDetails(props) {
     </div>
   ) : (
     <div>
-      {cocktail.data.drinks.map(drink => (
         <div className={classes.cardsContainer}>
           <Card className={classes.cardWithImage}>
-            <FlippyCard drink={drink} />
+            <FlippyCard drink={cocktail} />
           </Card>
         </div>
-      ))}
     </div>
   );
 }

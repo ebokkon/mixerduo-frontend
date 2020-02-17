@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import ResponsiveFontSizes from "../../ResponsiveFontSizes";
+import axios from "axios";
+import {ShoppingCartContext} from "../../../context/ShoppingCartContext";
 
 export default function SimpleTable(props) {
+    const { cart, setCart } = useContext(ShoppingCartContext);
+
+
   const useStyles = makeStyles({
     table: {
       maxWidth: 550
@@ -23,7 +29,7 @@ export default function SimpleTable(props) {
   const classes = useStyles();
 
   const quantityCalculation = courseTitle => {
-    switch (courseTitle) {
+    switch (courseTitle.key) {
       case "Advanced":
         return 50;
       case "Beginners":
@@ -34,6 +40,21 @@ export default function SimpleTable(props) {
         return 1;
     }
   };
+
+  // const increaseCart = (title) => {
+  //     axios.get(`http://localhost:8080/increase-in-cart/${title}`)
+  //         .then(response => setCart(response.data));
+  // };
+  //
+  // const decreaseCart = (title) => {
+  //     axios.get(`http://localhost:8080/decrease-in-cart/${title}`)
+  //         .then(response => setCart(response.data))
+  // };
+  //
+  // const removeFromCart = (title) => {
+  //     axios.get(`http://localhost:8080/remove-from-cart/${title}`)
+  //         .then(response => setCart(response.data))
+  // };
 
   return (
     <div>
@@ -52,23 +73,29 @@ export default function SimpleTable(props) {
               <TableCell className={classes.tableHeader}>Total Price</TableCell>
             </TableRow>
           </TableHead>
-
-          {props.cart.map(item => {
+          <TableBody>
+          {Object.keys(cart).map(function(key) {
             return (
               <TableRow>
                 <TableCell component="th" scope="row">
-                  {Object.keys(item)[0]}
+                  {key}
                 </TableCell>
                 <TableCell align="center">
-                  {item[Object.keys(item)[0]] /
-                    quantityCalculation(Object.keys(item)[0])}
+                  {cart[key]}
                 </TableCell>
                 <TableCell align="center">
-                  {item[Object.keys(item)[0]]}
+                  {cart[key] *
+                  quantityCalculation({key})}
                 </TableCell>
+                {/*<TableCell>*/}
+                {/*    <button onClick={() => decreaseCart({key})}> - </button>*/}
+                {/*    <button onClick={() => increaseCart({key})}> + </button>*/}
+                {/*    <button onClick={() => removeFromCart({key})}>Remove</button>*/}
+                {/*</TableCell>*/}
               </TableRow>
             );
           })}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>
