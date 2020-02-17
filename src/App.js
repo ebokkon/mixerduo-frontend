@@ -12,6 +12,7 @@ import CocktailDetails from "./components/pages/cocktailunits/CocktailDetails";
 import Search from "./components/pages/Search";
 import Courses from "./components/pages/Courses";
 import ShoppingCart from "./components/pages/ShoppingCart";
+import Checkout from "./components/pages/Checkout";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
               )}
             />
             <Route exact path="/shoppingcart" component={ShoppingCart} />
+            <Route exact path="/shoppingcart/checkout" component={Checkout} />
           </div>
         </BrowserRouter>
       </CocktailsListProvider>
