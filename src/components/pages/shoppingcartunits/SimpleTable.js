@@ -71,6 +71,7 @@ export default function SimpleTable(props) {
               <TableCell className={classes.tableHeader}>Course Type</TableCell>
               <TableCell className={classes.tableHeader}>Quantity</TableCell>
               <TableCell className={classes.tableHeader}>Total Price</TableCell>
+              <TableCell className={classes.tableHeader}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -87,7 +88,7 @@ export default function SimpleTable(props) {
                   {cart[key] *
                   quantityCalculation(key)}
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                     <button onClick={() => decreaseCart(key)}> - </button>
                     <button onClick={() => increaseCart(key)}> + </button>
                     <button onClick={() => removeFromCart(key)}>Remove</button>
