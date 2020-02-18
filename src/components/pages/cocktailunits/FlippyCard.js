@@ -37,20 +37,6 @@ export default function FlippyCard(props) {
 
   const classes = useStyles();
 
-  const getIngredients = () => {
-    let cocktailArray = props;
-    let ingredients = [];
-    let measurements = [];
-    for (let key in cocktailArray.drink) {
-      if (key.startsWith("strIngredient") && cocktailArray.drink[key] !== null) {
-        ingredients.push(cocktailArray.drink[key]);
-      } else if (key.startsWith("strMeasure") && cocktailArray.drink[key] !== null) {
-        measurements.push(cocktailArray.drink[key]);
-      }
-    }
-    return { ing: ingredients, measure: measurements };
-  };
-
   return (
     <Flippy
       flipOnHover={false}
@@ -82,10 +68,13 @@ export default function FlippyCard(props) {
                 <div className={classes.text}>{props.drink.strGlass}</div>
               </Typography>
 
+
               <div className={classes.titleText}>INGREDIENTS: </div>
-              <Ingredients tag={"Ingredients: "} data={getIngredients().ing} />
+              <Ingredients tag={"Ingredients: "} data={props.drink.ingredients} />
+
               <div className={classes.titleText}>MEASUREMENTS: </div>
-              <Ingredients data={getIngredients().measure} />
+              <Ingredients data={props.drink.measurements} />
+
               <div className={classes.titleText}>INSTRUCTIONS: </div>
               <div className={classes.text}>{props.drink.strInstructions}</div>
             </div>
