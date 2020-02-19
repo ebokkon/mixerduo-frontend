@@ -3,6 +3,8 @@ import AddressForm from "./checkoutunits/AddressForm";
 import OrderList from "./checkoutunits/OrderList";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+import {Link as RouterLink} from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -41,6 +43,10 @@ export default function Checkout () {
         <React.Fragment>
             <AddressForm/>
         </React.Fragment>
+        </Paper>
+        <Paper className={classes.paper}>
+            <Button variant="outlined" color="primary" component={RouterLink} to="/shoppingcart">Return to Cart</Button>
+            <Button variant="outlined" color="primary">Proceed to Payment</Button>
         </Paper>
         </div>
     );
