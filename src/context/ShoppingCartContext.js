@@ -19,7 +19,6 @@ export const ShoppingCartProvider = props => {
   //   setCart(cart);
   // }, []);
 
-  console.log(cart);
 
   return (
     <ShoppingCartContext.Provider value={{ cart, setCart }}>

@@ -76,13 +76,13 @@ export default function SimpleTable(props) {
               <TableCell className={classes.tableHeader}>Course Type</TableCell>
               <TableCell className={classes.tableHeader}>Quantity</TableCell>
               <TableCell className={classes.tableHeader}>Total Price</TableCell>
-              <TableCell className={classes.tableHeader}></TableCell>
+              <TableCell className={classes.tableHeader}> </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
           {Object.keys(cart).map(function(key) {
             return (
-              <TableRow>
+              <TableRow key={key}>
                 <TableCell component="th" scope="row">
                   {key}
                 </TableCell>
@@ -94,8 +94,8 @@ export default function SimpleTable(props) {
                   quantityCalculation(key)} $
                 </TableCell>
                 <TableCell>
-                    <Button onClick={() => decreaseCart(key)} startIcon={<RemoveIcon/>} ></Button>
-                    <Button onClick={() => increaseCart(key)} startIcon={<AddCircleOutlineIcon/>}></Button>
+                    <Button onClick={() => decreaseCart(key)} startIcon={<RemoveIcon/>} > </Button>
+                    <Button onClick={() => increaseCart(key)} startIcon={<AddCircleOutlineIcon/>}> </Button>
                     <Button onClick={() => removeFromCart(key)}
                             variant="contained"
                             className={classes.button}
