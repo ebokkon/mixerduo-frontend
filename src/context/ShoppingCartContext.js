@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export const ShoppingCartContext = React.createContext();
 
@@ -17,6 +18,8 @@ export const ShoppingCartProvider = props => {
   //     : [];
   //   setCart(cart);
   // }, []);
+
+  console.log(cart);
 
   return (
     <ShoppingCartContext.Provider value={{ cart, setCart }}>
