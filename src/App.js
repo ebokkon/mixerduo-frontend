@@ -39,7 +39,7 @@ function App() {
               path={`/cocktails/:id`}
               render={props => (
                 <React.Fragment>
-                  <CocktailDetails id={props} />
+                  <CocktailDetails id={props}/>
                 </React.Fragment>
               )}
             />

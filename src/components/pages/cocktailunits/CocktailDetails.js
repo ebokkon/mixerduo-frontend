@@ -1,7 +1,6 @@
 import React from "react";
 import { useHttp } from "../../../hooks/Http";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CircularProgress from "../../CircularProgress";
 import FlippyCard from "./FlippyCard";
 
@@ -11,7 +10,7 @@ const useStyles = makeStyles({
   },
   cardsContainer: {
     width: "35%",
-    margin: "30px auto 0px"
+    margin: "40px auto 0px",
   },
   card: {
     background: "white"
@@ -31,7 +30,7 @@ export default function CocktailDetails(props) {
       <CircularProgress />
     </div>
   ) : (
-    <div className={classes.cardsContainer}>
+    <div className={`cardsContainer ${classes.cardsContainer}`}>
       <FlippyCard className={classes.cardWithImage} drink={cocktail} />
     </div>
   );

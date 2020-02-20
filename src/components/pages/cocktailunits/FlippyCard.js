@@ -1,14 +1,10 @@
 import Flippy, {FrontSide, BackSide} from "react-flippy";
 import {makeStyles} from "@material-ui/core/styles";
 import CocktailDetailsImage from "./CocktailDetailsImage";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import Ingredients from "./Ingredients";
 import Card from "@material-ui/core/Card";
 
 import React from "react";
-import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
     cardWithImage: {
@@ -16,20 +12,22 @@ const useStyles = makeStyles({
         justifyContent: "space-between"
     },
     cardWithText: {
-        background: "lightgrey",
-        padding: "5px",
-        margin: "auto",
-        justifyContent: "space-around"
+        background: "white",
+        width: "100%",
+        height: "100%",
+        overflow: "unset",
+        overflowY: "scroll"
     },
     titleText: {
+        textAlign: "center",
         color: "blue"
     },
     text: {
-        textAlign: "left",
-        background: "lightgrey"
+        textAlign: "center"
     },
     sides: {
-        backgroundColor: "white"
+        width: "100%",
+        backgroundColor: "white",
     },
 });
 
@@ -42,13 +40,12 @@ export default function FlippyCard(props) {
             flipOnHover={false}
             flipOnClick={true}
             flipDirection="horizontal"
-            className={classes.flippy}
         >
             <FrontSide className={classes.sides}>
                 <CocktailDetailsImage image={props.drink.strDrinkThumb} className={classes.cardWithImage}/>
             </FrontSide>
             <BackSide className={classes.sides}>
-                <Card className={classes.cardWithText}>
+                <Card className={`flippyCard ${classes.cardWithText}`}>
                         <div className={classes.titleText}>NAME:</div>
                         <div className={classes.text}>{props.drink.strDrink}</div>
                         <div className={classes.titleText}>CATEGORY:</div>

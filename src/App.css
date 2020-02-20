@@ -19,9 +19,21 @@ html {
   text-align: center;
 }
 
-@media screen and (max-width: 600px) {
-  .cardsContainer .cardWithImage .flippy .sides .image {
-    width: 100%;
-    padding: 2px;
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+@media screen and (max-width: 700px) {
+  .cardsContainer {
+    width: 100% !important;
+    padding: 2px !important;
   }
 }
+
+/*.cardWithText:hover {*/
+/*  height: auto;*/
+/*}*/
