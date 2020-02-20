@@ -7,12 +7,21 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
-  /* background: linear-gradient(0.25turn, #1d96f2, #cae2e6, #36509c); */
-  /* background: linear-gradient(0.25turn, #0b85b5, #cae2e6, #36509c); */
+  /*background: linear-gradient(0.25turn, #31d7d4, #e2f0f2, #668af4) no-repeat;*/
+}
+
+html {
   background: linear-gradient(0.25turn, #31d7d4, #e2f0f2, #668af4);
 }
 
 #browsepage,
 #searchpage {
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .cardsContainer .cardWithImage .flippy .sides .image {
+    width: 100%;
+    padding: 2px;
+  }
 }

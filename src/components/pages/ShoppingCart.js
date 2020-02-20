@@ -48,7 +48,6 @@ export default function ShoppingCart() {
            direction="column"
            justify="center"
            alignItems="center">
-
        <SimpleTable cart={cart} />
        <Grid item>
        <Paper  className={classes.paper}>
