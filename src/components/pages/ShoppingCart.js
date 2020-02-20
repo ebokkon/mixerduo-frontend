@@ -37,7 +37,7 @@ export default function ShoppingCart() {
 
   const classes = useStyles();
 
-  return cart.length === 0 ? (
+  return Object.entries(cart).length === 0 ? (
       <React.Fragment>
         <ShoppingCartMessage/>
         <Button variant="outlined" classes={{
