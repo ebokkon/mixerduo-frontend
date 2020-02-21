@@ -40,21 +40,19 @@ export default function ShoppingCart() {
   return Object.entries(cart).length === 0 ? (
       <React.Fragment>
         <ShoppingCartMessage/>
-        <Button variant="outlined" classes={{
-            root: classes.root}} component={RouterLink} to="/courses">Checkout our Courses!</Button>
       </React.Fragment>
   ) : (
      <Grid container
            direction="column"
            justify="center"
            alignItems="center">
-       <SimpleTable cart={cart} />
-       <Grid item>
-       <Paper  className={classes.paper}>
-           <Button variant="outlined" color="primary" component={RouterLink} to="/courses">Continue Shopping</Button>
-           <Button variant="outlined" color="primary" component={RouterLink} to="/shoppingcart/checkout">Checkout</Button>
-       </Paper>
-       </Grid>
+       <SimpleTable cart={cart} className={`simpleTable`} />
+       {/*<Grid item className={`grid`}>*/}
+       {/*<Paper  className={classes.paper}>*/}
+       {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/courses">Continue Shopping</Button>*/}
+       {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/shoppingcart/checkout">Checkout</Button>*/}
+       {/*</Paper>*/}
+       {/*</Grid>*/}
      </Grid>
   );
 }

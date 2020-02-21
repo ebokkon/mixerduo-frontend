@@ -21,19 +21,46 @@ html {
 
 ::-webkit-scrollbar {
   width: 2px;
+  height: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: black;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .cardsContainer {
-    width: 100% !important;
+    width: 60% !important;
     padding: 2px !important;
   }
 }
 
-/*.cardWithText:hover {*/
-/*  height: auto;*/
-/*}*/
+@media screen and (max-width: 600px) {
+  .cardsContainer {
+    width: 100% !important;
+    padding: 5px !important;
+  }
+}
+
+.simpleTable {
+  min-width: 712px !important;
+  height: 100% !important;
+  margin: auto !important;
+  overflow: unset !important;
+  overflow-x: scroll !important;
+}
+
+.button {
+  color: midnightblue !important;
+  border-color: midnightblue !important;
+  background: white !important;
+  margin-top: 60px !important;
+}
+
+.buttont {
+  margin: 12px 35px !important;
+  color: black !important;
+  background: lightgrey !important;
+  border-color: black !important;
+  text-align: justify-all !important;
+}
