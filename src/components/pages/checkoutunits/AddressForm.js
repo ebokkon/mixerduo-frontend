@@ -2,7 +2,6 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Button from "@material-ui/core/Button";
 
 export default function AddressForm() {
     return (
@@ -82,9 +81,6 @@ export default function AddressForm() {
                         fullWidth
                         autoComplete="billing country"
                     />
-                </Grid>
-                <Grid item xs={12}>
-                    <Button>Proceed to Payment</Button>
                 </Grid>
             </Grid>
         </React.Fragment>
