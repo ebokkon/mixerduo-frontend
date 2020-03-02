@@ -7,12 +7,60 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
-  /* background: linear-gradient(0.25turn, #1d96f2, #cae2e6, #36509c); */
-  /* background: linear-gradient(0.25turn, #0b85b5, #cae2e6, #36509c); */
+  /*background: linear-gradient(0.25turn, #31d7d4, #e2f0f2, #668af4) no-repeat;*/
+}
+
+html {
   background: linear-gradient(0.25turn, #31d7d4, #e2f0f2, #668af4);
 }
 
 #browsepage,
 #searchpage {
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+@media screen and (max-width: 900px) {
+  .cardsContainer {
+    width: 60% !important;
+    padding: 2px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cardsContainer {
+    width: 100% !important;
+    padding: 5px !important;
+  }
+}
+
+.simpleTable {
+  min-width: 712px !important;
+  height: 100% !important;
+  margin: auto !important;
+  overflow: unset !important;
+  overflow-x: scroll !important;
+}
+
+.button {
+  color: midnightblue !important;
+  border-color: midnightblue !important;
+  background: white !important;
+  margin-top: 60px !important;
+}
+
+.buttont {
+  margin: 12px 35px !important;
+  color: black !important;
+  background: lightgrey !important;
+  border-color: black !important;
+  text-align: justify-all !important;
 }
