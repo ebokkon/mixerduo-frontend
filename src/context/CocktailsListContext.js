@@ -7,7 +7,7 @@ export const CocktailsListProvider = props => {
   const [cocktails, setCocktails] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/all-data").then(response => setCocktails(response.data))
+    axios.get("http://localhost:8080/cocktails").then(response => setCocktails(response.data))
   }, []);
 
   return (

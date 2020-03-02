@@ -7,7 +7,7 @@ export default function ButtonAddToCart(props) {
     const { cart, setCart } = useContext(ShoppingCartContext);
 
     const addToCart = (title) => {
-        axios.get(`http://localhost:8080/add-to-cart/${title}`)
+        axios.post(`http://localhost:8080/add/${title}`)
             .then(response => setCart(response.data));
     };
 
