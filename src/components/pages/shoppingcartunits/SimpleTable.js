@@ -47,20 +47,20 @@ export default function SimpleTable(props) {
         }
     };
 
-    const increaseCart = (title) => {
-        axios.get(`http://localhost:8080/increase-in-cart/${title}`)
-            .then(response => setCart(response.data));
-    };
+  const increaseCart = (title) => {
+      axios.put(`http://localhost:8080/increase/${title}`)
+          .then(response => setCart(response.data));
+  };
 
-    const decreaseCart = (title) => {
-        axios.get(`http://localhost:8080/decrease-in-cart/${title}`)
-            .then(response => setCart(response.data))
-    };
+  const decreaseCart = (title) => {
+      axios.put(`http://localhost:8080/decrease/${title}`)
+          .then(response => setCart(response.data))
+  };
 
-    const removeFromCart = (title) => {
-        axios.get(`http://localhost:8080/remove-from-cart/${title}`)
-            .then(response => setCart(response.data))
-    };
+  const removeFromCart = (title) => {
+      axios.delete(`http://localhost:8080/remove/${title}`)
+          .then(response => setCart(response.data))
+  };
 
     return (
         <Grid item>
