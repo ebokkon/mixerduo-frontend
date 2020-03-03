@@ -64,3 +64,7 @@ html {
   border-color: black !important;
   text-align: justify-all !important;
 }
+
+.form button:hover,.form button:active,.form button:focus {
+  background: lightgrey;
+}

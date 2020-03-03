@@ -13,6 +13,8 @@ import Search from "./components/pages/Search";
 import Courses from "./components/pages/Courses";
 import ShoppingCart from "./components/pages/ShoppingCart";
 import Checkout from "./components/pages/Checkout";
+import SignUp from "./components/pages/checkoutunits/SignUp";
+import SignIn from "./components/pages/checkoutunits/SignIn";
 
 function App() {
   return (
@@ -52,6 +54,8 @@ function App() {
                 </React.Fragment>
               )}
             />
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/shoppingcart" component={ShoppingCart} />
             <Route exact path="/shoppingcart/checkout" component={Checkout} />
           </div>

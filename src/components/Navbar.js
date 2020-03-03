@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Navbar() {
+export default function
+    Navbar() {
   const classes = useStyles();
   return (
     <AppBar
@@ -78,6 +79,24 @@ export default function Navbar() {
             className={classes.link}
           >
             Search
+          </Link>
+          <Link
+              to="/sign-up"
+              component={RouterLink}
+              variant="button"
+              color="textPrimary"
+              className={classes.link}
+          >
+            Sign up
+          </Link>
+          <Link
+              to="/sign-in"
+              component={RouterLink}
+              variant="button"
+              color="textPrimary"
+              className={classes.link}
+          >
+            Sign in
           </Link>
         </nav>
         <Link component={RouterLink} to="/shoppingcart">
