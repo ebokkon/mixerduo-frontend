@@ -1,12 +1,10 @@
 import React from "react";
 import Form from "./Form";
 
-export default function SignUp() {
-
-    const buttonText = "Sign Up";
+export default function SignUp(props) {
 
     return (
-        <Form buttonText={buttonText}/>
+        <Form buttonText={props.buttontext}/>
     )
 
 }
