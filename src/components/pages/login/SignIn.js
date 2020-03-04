@@ -62,7 +62,7 @@ export default function SignIn() {
     const checkResponse = (response) => {
         if (response.data.correct) {
             setUser(response.data);
-            localStorage.setItem("token", response.data.token)
+            localStorage.setItem("token", response.data.token);
             redirect();
         } else {
             setMessage(response.data.msg);
