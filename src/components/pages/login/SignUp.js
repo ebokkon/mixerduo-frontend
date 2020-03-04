@@ -1,13 +1,11 @@
-import React from "react";
+import React, {useContext, useState} from "react";
+import Form from "./Form";
+import axios from "axios";
+import {UserContext} from "../../../context/UserContext";
 import {makeStyles} from "@material-ui/core/styles";
 
+
 const useStyles = makeStyles({
-    // body: {
-    //     background: "linear-gradient(to left, lightsteelblue, lightskyblue)",
-    //     fontFamily: "Roboto, sans-serif",
-    //     webkitFontSmoothing: "antialiased",
-    //     mozOsxFontSmoothing: "grayscale"
-    // },
     form: {
         position: "relative",
         zIndex: "1",
@@ -50,18 +48,32 @@ const useStyles = makeStyles({
     }
 });
 
-export default function Form(props) {
+
+
+export default function SignUp() {
+
+    const { user, setUser } = useContext(UserContext);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
     const classes = useStyles();
+
+    const sendRequest = (event) => {
+        event.preventDefault();
+        let params = {"username": username, "password": password};
+        axios.post("http://localhost:8080/auth/sign_up", params).then(response => console.log(response))
+    };
 
     return (
         <div className={classes.loginPage}>
-            <div className={classes.form}>
-                <form className="login-form">
-                    <input className={classes.input} type="text" placeholder="username"/>
-                    <input className={classes.input} type="password" placeholder="password"/>
-                    <button className={classes.button}>{props.buttonText}</button>
-                </form>
-            </div>
+            <form className={classes.form} onSubmit={sendRequest}>
+                <div className="login-form">
+                    <input className={classes.input} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
+                    <input className={classes.input} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
+                    <input type="submit" value="Sign up" className={classes.button}/>
+                </div>
+            </form>
         </div>
     )
+
 }

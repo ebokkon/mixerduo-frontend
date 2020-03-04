@@ -13,11 +13,13 @@ import Search from "./components/pages/Search";
 import Courses from "./components/pages/Courses";
 import ShoppingCart from "./components/pages/ShoppingCart";
 import Checkout from "./components/pages/Checkout";
-import SignUp from "./components/pages/checkoutunits/SignUp";
-import SignIn from "./components/pages/checkoutunits/SignIn";
+import SignUp from "./components/pages/login/SignUp";
+import SignIn from "./components/pages/login/SignIn";
+import {UserContext, UserProvider} from "./context/UserContext";
 
 function App() {
   return (
+    <UserProvider>
     <ShoppingCartProvider>
       <CocktailsListProvider>
         <BrowserRouter>
@@ -62,6 +64,7 @@ function App() {
         </BrowserRouter>
       </CocktailsListProvider>
     </ShoppingCartProvider>
+    </UserProvider>
   );
 }
 
