@@ -66,5 +66,9 @@ html {
 }
 
 .form button:hover,.form button:active,.form button:focus {
-  background: lightgrey;
+  background: lightgrey !important;
+}
+
+.formInput {
+  width: 100% !important;
 }

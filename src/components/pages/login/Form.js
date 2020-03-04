@@ -1,17 +1,7 @@
-import React, {useContext, useState} from "react";
+import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import {useHttp} from "../../../hooks/Http";
-import axios from "axios";
-import {ShoppingCartContext} from "../../../context/ShoppingCartContext";
-import {UserContext} from "../../../context/UserContext";
 
 const useStyles = makeStyles({
-    // body: {
-    //     background: "linear-gradient(to left, lightsteelblue, lightskyblue)",
-    //     fontFamily: "Roboto, sans-serif",
-    //     webkitFontSmoothing: "antialiased",
-    //     mozOsxFontSmoothing: "grayscale"
-    // },
     form: {
         position: "relative",
         zIndex: "1",
@@ -26,7 +16,6 @@ const useStyles = makeStyles({
         fontFamily: "\"Roboto\", sans-serif",
         outline: "0",
         background: "#f2f2f2",
-        width: "100 %",
         border: "0",
         margin: "0 0 15px",
         padding: "15px",
@@ -47,7 +36,7 @@ const useStyles = makeStyles({
         transition: "all 0.3 ease",
         cursor: "pointer"
     },
-    loginPage: {
+    login: {
         width: "360px",
         padding: "8% 0 0",
         margin: "auto"
@@ -55,19 +44,17 @@ const useStyles = makeStyles({
 });
 
 export default function Form(props) {
+
     const classes = useStyles();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
 
     return (
-        <div className={classes.loginPage}>
-            <form className={classes.form}>
-                <div className="login-form">
-                    <input className={classes.input} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
-                    <input className={classes.input} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
-                    <button className={classes.button} onClick={props.send(username, password)}>{props.buttonText}</button>
-                </div>
-            </form>
+        <div className={classes.login}>
+                <form className={classes.form}>
+                    <input className={`formInput ${classes.input}`} type="text" placeholder="username"/>
+                    <input className={`formInput ${classes.input}`} type="password" placeholder="password"/>
+                    <button className={classes.button}>{props.buttonText}</button>
+                </form>
         </div>
+
     )
 }
