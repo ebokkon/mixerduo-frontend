@@ -83,6 +83,8 @@ export default function SignUp() {
     return (
         <div className={classes.login}>
             <form className={classes.form} onSubmit={sendRequest}>
+                { (message !== "") ?
+                    <div className={`message`}>{message}</div> : <div> </div>}
                     <input className={`formInput ${classes.input}`} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
                     <input className={`formInput ${classes.input}`} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
                     <input type="submit" value="Sign up" className={classes.button}/>

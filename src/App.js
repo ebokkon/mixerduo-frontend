@@ -15,6 +15,7 @@ import ShoppingCart from "./components/pages/ShoppingCart";
 import Checkout from "./components/pages/Checkout";
 import SignUp from "./components/pages/login/SignUp";
 import SignIn from "./components/pages/login/SignIn";
+import LogOut from "./components/pages/login/LogOut";
 import {UserContext, UserProvider} from "./context/UserContext";
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
             />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/sign-in" component={SignIn} />
+            <Route exact path="/log-out" component={LogOut} />
             <Route exact path="/shoppingcart" component={ShoppingCart} />
             <Route exact path="/shoppingcart/checkout" component={Checkout} />
           </div>

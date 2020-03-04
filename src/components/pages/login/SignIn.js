@@ -83,11 +83,13 @@ export default function SignIn() {
         <div className={classes.login}>
             <form className={classes.form} onSubmit={sendRequest}>
                 { (message !== "") ?
-                    <div>{message}</div> : <div> </div>}
+                    <div className={`message`}>{message}</div> : <div> </div>}
                     <input className={`formInput ${classes.input}`} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
                     <input className={`formInput ${classes.input}`} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
                     <input type="submit" value="Sign in" className={classes.button}/>
-                    <RouterLink className={`linkSignup`} to="/sign-up">Sign Up</RouterLink>
+                    <div className={`linkSignup`}>
+                    <RouterLink to="/sign-up">Sign Up</RouterLink>
+                    </div>
             </form>
         </div>
     )
