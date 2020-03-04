@@ -89,15 +89,6 @@ export default function
           >
             Sign in
           </Link>
-          {/*<Link*/}
-          {/*    to="/sign-in"*/}
-          {/*    component={RouterLink}*/}
-          {/*    variant="button"*/}
-          {/*    color="textPrimary"*/}
-          {/*    className={classes.link}*/}
-          {/*>*/}
-          {/*  Sign in*/}
-          {/*</Link>*/}
         </nav>
         <Link component={RouterLink} to="/shoppingcart">
           <ShoppingCartIcon style={{ cursor: "pointer" }}>

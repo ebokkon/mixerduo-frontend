@@ -1,8 +1,9 @@
 import React, {useContext, useState} from "react";
-import Form from "./Form";
 import axios from "axios";
 import {UserContext} from "../../../context/UserContext";
 import {makeStyles} from "@material-ui/core/styles";
+import { Link as RouterLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     form: {
@@ -40,10 +41,10 @@ const useStyles = makeStyles({
             transition: "all 0.3 ease",
             cursor: "pointer"
     },
-    loginPage: {
+    login: {
         width: "360px",
-            padding: "8% 0 0",
-            margin: "auto"
+        padding: "8% 0 0",
+        margin: "auto"
     }
 });
 
@@ -53,23 +54,40 @@ export default function SignIn() {
     const { user, setUser } = useContext(UserContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+    const history = useHistory();
 
     const classes = useStyles();
+
+    const checkResponse = (response) => {
+        if (response.data.correct) {
+            setUser(response.data);
+            localStorage.setItem("token", response.data.token)
+            redirect();
+        } else {
+            setMessage(response.data.msg);
+        }
+    };
+
+    const redirect = () => {
+        history.push("/");
+    };
 
     const sendRequest = (event) => {
         event.preventDefault();
         let params = {"username": username, "password": password};
-        axios.post("http://localhost:8080/auth/sign_in", params).then(response => console.log(response))
+        axios.post("http://localhost:8080/auth/sign_in", params).then(response => checkResponse(response))
     };
 
     return (
-        <div className={classes.loginPage}>
+        <div className={classes.login}>
             <form className={classes.form} onSubmit={sendRequest}>
-                <div className="login-form">
-                    <input className={classes.input} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
-                    <input className={classes.input} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
+                { (message !== "") ?
+                    <div>{message}</div> : <div> </div>}
+                    <input className={`formInput ${classes.input}`} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
+                    <input className={`formInput ${classes.input}`} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
                     <input type="submit" value="Sign in" className={classes.button}/>
-                </div>
+                    <RouterLink className={`linkSignup`} to="/sign-up">Sign Up</RouterLink>
             </form>
         </div>
     )
