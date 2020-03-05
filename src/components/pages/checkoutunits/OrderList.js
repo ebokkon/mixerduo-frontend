@@ -63,14 +63,14 @@ export default function OrderList () {
                         <ListItem className={classes.listItem}>
                             <ListItemText primary={cart[key] + " " + key + " Course"}/>
                             <Typography variant="body2">{cart[key] *
-                                    quantityCalculation(key)}</Typography>
+                                    quantityCalculation(key)}$</Typography>
                         </ListItem>
                         )
                 })}
             <ListItem className={classes.listItem}>
                 <ListItemText primary="Total"/>
                 <Typography variant="subtitle1" className={classes.total}>
-                    {calculateTotal()}
+                    {calculateTotal()}$
                 </Typography>
             </ListItem>
             </List>
