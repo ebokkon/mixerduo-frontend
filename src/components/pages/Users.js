@@ -20,8 +20,8 @@ export default function Users() {
         let token = user.token;
         let header = {'Authorization': `Bearer ${token}`};
         axios.post("http://localhost:8080/users", null, {headers: header})
-            .then(response => console.log(response.data));
-    });
+            .then(response => setAllUsers(response.data));
+    }, []);
 
     const useStyles = makeStyles({
         tableHeader: {
@@ -39,6 +39,19 @@ export default function Users() {
     });
     const classes = useStyles();
 
+    const quantityCalculation = courseTitle => {
+        switch (courseTitle) {
+            case "Advanced":
+                return 50;
+            case "Beginners":
+                return 30;
+            case "Pro":
+                return 80;
+            default:
+                return 1;
+        }
+    };
+
     return (
         allUsers.length <= 1 ?
             <EmptyContainerMessage message={"There are no registered users!"}/>
@@ -52,35 +65,37 @@ export default function Users() {
                             <TableRow>
                                 <TableCell className={classes.username}>{user.username}</TableCell>
 
+                                <TableCell>
+                                    <Table aria-label="simple table">
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell className={classes.tableHeader}>Course
+                                                    Type</TableCell>
+                                                <TableCell className={classes.tableHeader}>Quantity</TableCell>
+                                                <TableCell className={classes.tableHeader}>Total
+                                                    Price</TableCell>
+                                                {/*<TableCell className={classes.tableHeader}>Total</TableCell>*/}
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
 
-                                {/*{user.cart.cartMap.map(singleCartMap => {*/}
-                                {/*        return (*/}
+                                            {Object.keys(user.cart.cartMap).map(function (key) {
+                                                    return (
 
-                                            <TableCell>
-                                                <Table aria-label="simple table">
-                                                    <TableHead>
                                                         <TableRow>
-                                                            <TableCell className={classes.tableHeader}>Course
-                                                                Type</TableCell>
-                                                            <TableCell className={classes.tableHeader}>Quantity</TableCell>
-                                                            <TableCell className={classes.tableHeader}>Total
-                                                                Price</TableCell>
+                                                            <TableCell>{key}</TableCell>
+                                                            <TableCell>{user.cart.cartMap[key]}</TableCell>
+                                                            <TableCell>{user.cart.cartMap[key] *
+                                                            quantityCalculation(key)} $ </TableCell>
                                                         </TableRow>
-                                                    </TableHead>
-                                                    <TableBody>
-                                                        <TableRow>
-                                                            <TableCell> </TableCell>
-                                                            <TableCell> </TableCell>
-                                                            <TableCell> </TableCell>
-                                                        </TableRow>
-                                                    </TableBody>
-                                                </Table>
 
-                                            </TableCell>
+                                                    )
+                                                }
+                                            )}
+                                        </TableBody>
+                                    </Table>
 
-                                {/*        )*/}
-                                {/*    }*/}
-                                {/*)};*/}
+                                </TableCell>
 
                             </TableRow>
                         )}
