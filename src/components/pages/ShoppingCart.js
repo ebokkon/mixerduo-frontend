@@ -34,7 +34,9 @@ export default function ShoppingCart() {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-      axios.get("http://localhost:8080/get-cart").then(response => setCart(response.data))
+      let token = user.token;
+      let header = {"Authorization": `Bearer ${token}`};
+      axios.get("http://localhost:8080/get-cart", {headers:header}).then(response => setCart(response.data))
   }, []);
 
   const classes = useStyles();

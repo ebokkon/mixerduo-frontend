@@ -65,7 +65,7 @@ export default function SimpleTable(props) {
   const removeFromCart = (title) => {
       let token = user.token;
       let header = {"Authorization": `Bearer ${token}`};
-      axios.delete(`http://localhost:8080/remove`, "title="+title, {headers: header})
+      axios.delete(`http://localhost:8080/remove`,  {headers: {"Authorization": `Bearer ${token}`}, data:title})
           .then(response => setCart(response.data))
   };
 
