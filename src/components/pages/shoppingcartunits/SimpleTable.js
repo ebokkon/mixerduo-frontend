@@ -16,10 +16,11 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/Remove';
 import Grid from "@material-ui/core/Grid";
 import {Link as RouterLink} from "react-router-dom";
+import {UserContext} from "../../../context/UserContext";
 
 export default function SimpleTable(props) {
     const {cart, setCart} = useContext(ShoppingCartContext);
-
+    const { user, setUser } = useContext(UserContext);
 
     const useStyles = makeStyles({
         table: {
@@ -48,22 +49,29 @@ export default function SimpleTable(props) {
     };
 
   const increaseCart = (title) => {
-      axios.put(`http://localhost:8080/increase/${title}`)
+      let token = user.token;
+      let header = {"Authorization": `Bearer ${token}`};
+      axios.put(`http://localhost:8080/increase`, "title="+ title, {headers: header})
           .then(response => setCart(response.data));
   };
 
   const decreaseCart = (title) => {
-      axios.put(`http://localhost:8080/decrease/${title}`)
+      let token = user.token;
+      let header = {"Authorization": `Bearer ${token}`};
+      axios.put(`http://localhost:8080/decrease`, "title="+title, {headers: header})
           .then(response => setCart(response.data))
   };
 
   const removeFromCart = (title) => {
-      axios.delete(`http://localhost:8080/remove/${title}`)
+      let token = user.token;
+      let header = {"Authorization": `Bearer ${token}`};
+      axios.delete(`http://localhost:8080/remove`,  {headers: {"Authorization": `Bearer ${token}`}, data:title})
           .then(response => setCart(response.data))
   };
 
     return (
         <Grid item>
+            <div>{console.log(cart)}</div>
             <div className={classes.tableTitle}>
                 <ResponsiveFontSizes variant={"h3"} text={"Ordered Items: "}/>
             </div>

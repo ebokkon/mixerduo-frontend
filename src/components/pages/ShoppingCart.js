@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
+import {UserContext} from "../../context/UserContext";
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,31 +31,48 @@ const useStyles = makeStyles(theme => ({
 
 export default function ShoppingCart() {
   const { cart, setCart } = useContext(ShoppingCartContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-      axios.get("http://localhost:8080/get-cart").then(response => setCart(response.data))
+      let token = user.token;
+      let header = {"Authorization": `Bearer ${token}`};
+      axios.get("http://localhost:8080/get-cart", {headers:header}).then(response => setCart(response.data))
   }, []);
 
   const classes = useStyles();
 
-  return Object.entries(cart).length === 0 ? (
-      <React.Fragment>
-        <ShoppingCartMessage/>
-      </React.Fragment>
-  ) : (
-     <Grid container
-           direction="column"
-           justify="center"
-           alignItems="center">
-       <SimpleTable cart={cart} className={`simpleTable`} />
-       {/*<Grid item className={`grid`}>*/}
-       {/*<Paper  className={classes.paper}>*/}
-       {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/courses">Continue Shopping</Button>*/}
-       {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/shoppingcart/checkout">Checkout</Button>*/}
-       {/*</Paper>*/}
-       {/*</Grid>*/}
-     </Grid>
-  );
+  const page = () => {
+         if (user.length === 0){
+             return (<div>Please Sign in for shopping!</div>);
+         }
+         if (Object.entries(cart).length === 0) {
+             return (
+                 <React.Fragment>
+                     <ShoppingCartMessage/>
+                 </React.Fragment>
+             )
+         } else {
+             return (
+                 <Grid container
+                       direction="column"
+                       justify="center"
+                       alignItems="center">
+                     <SimpleTable cart={cart} className={`simpleTable`} />
+                     {/*<Grid item className={`grid`}>*/}
+                     {/*<Paper  className={classes.paper}>*/}
+                     {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/courses">Continue Shopping</Button>*/}
+                     {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/shoppingcart/checkout">Checkout</Button>*/}
+                     {/*</Paper>*/}
+                     {/*</Grid>*/}
+                 </Grid>
+             )
+         }
+    };
+
+    return (
+        <React.Fragment>
+            {page()}
+        </React.Fragment> )
 }
 
 

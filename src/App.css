@@ -64,3 +64,27 @@ html {
   border-color: black !important;
   text-align: justify-all !important;
 }
+
+.form button:hover,.form button:active,.form button:focus {
+  background: lightgrey !important;
+}
+
+.formInput {
+  width: 100% !important;
+}
+
+.linkSignup {
+  color: royalblue;
+  text-align: right;
+  font-family: "Roboto", sans-serif;
+}
+
+.message {
+  color: red;
+  font-family: "Roboto", sans-serif;
+}
+
+.circularProgress {
+  text-align: center;
+  margin-top: 30px;
+}
