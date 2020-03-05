@@ -23,9 +23,6 @@ export default function SimpleTable(props) {
     const { user, setUser } = useContext(UserContext);
 
     const useStyles = makeStyles({
-        table: {
-            // maxWidth: 550
-        },
         tableHeader: {fontWeight: "bold", fontSize: 20},
         tableTitle: {
             textAlign: "center",
@@ -51,21 +48,21 @@ export default function SimpleTable(props) {
   const increaseCart = (title) => {
       let token = user.token;
       let header = {"Authorization": `Bearer ${token}`};
-      axios.put(`http://localhost:8080/increase`, "title="+ title, {headers: header})
+      axios.put(`http://localhost:8080/increase`, "title="+title+"&username="+user.username, {headers: header})
           .then(response => setCart(response.data));
   };
 
   const decreaseCart = (title) => {
       let token = user.token;
       let header = {"Authorization": `Bearer ${token}`};
-      axios.put(`http://localhost:8080/decrease`, "title="+title, {headers: header})
+      axios.put(`http://localhost:8080/decrease`, "title="+title+"&username="+user.username, {headers: header})
           .then(response => setCart(response.data))
   };
 
   const removeFromCart = (title) => {
       let token = user.token;
       let header = {"Authorization": `Bearer ${token}`};
-      axios.delete(`http://localhost:8080/remove`,  {headers: {"Authorization": `Bearer ${token}`}, data:title})
+      axios.post(`http://localhost:8080/remove`,  {headers: {"Authorization": `Bearer ${token}`}, data:"title="+title+"&username="+user.username})
           .then(response => setCart(response.data))
   };
 
@@ -77,9 +74,8 @@ export default function SimpleTable(props) {
             </div>
             <TableContainer
                 component={Paper}
-                // style={{ maxWidth: 550, margin: "0 auto" }}
             >
-                <Table className={classes.table} aria-label="simple table">
+                <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell className={classes.tableHeader}>Course Type</TableCell>

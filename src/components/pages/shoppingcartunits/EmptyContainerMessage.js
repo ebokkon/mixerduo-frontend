@@ -3,11 +3,10 @@ import ResponsiveFontSizes from "../../ResponsiveFontSizes";
 import {Link as RouterLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
-export default function ShoppingCartMessage() {
+export default function EmptyContainerMessage(props) {
     return (
         <div style={cartMsg}>
-            <ResponsiveFontSizes variant={"h3"} text={"There are no items in your cart, yet!"}/>
-            <Button className={`button`} variant="contained" color="primary" component={RouterLink} to="/courses">Checkout our Courses!</Button>
+            <ResponsiveFontSizes variant={"h3"} text={props.message}/>
         </div>
     )
 }

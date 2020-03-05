@@ -29,8 +29,6 @@ export default function Navbar() {
     const {user, setUser} = useContext(UserContext);
     const classes = useStyles();
 
-    console.log("LocalStorageIsEmpty: " + localStorage);
-
     return (
         <AppBar
             position="static"
@@ -49,6 +47,17 @@ export default function Navbar() {
                     MixerDuo Co{" "}
                 </Typography>
                 <nav>
+                    {(user.length !== 0 && user.roles.filter(role => role === 'ROLE_ADMIN').length > 0) ?
+                        <Link
+                            to="/users"
+                            component={RouterLink}
+                            variant="button"
+                            color="textPrimary"
+                            className={classes.link}
+                        >
+                            Users
+                        </Link> :
+                        <div> </div>}
                     <Link
                         to="/"
                         component={RouterLink}
