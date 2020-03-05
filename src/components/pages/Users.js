@@ -70,7 +70,7 @@ export default function Users() {
 
                                 <TableCell>
 
-                                    {user.cart.cartMap === {}
+                                    {Object.entries(user.cart.cartMap).length === 0
                                         ? (<div> </div>) : (<Table aria-label="simple table">
                                             <TableHead>
                                                 <TableRow>
