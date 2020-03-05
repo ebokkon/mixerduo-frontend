@@ -17,10 +17,12 @@ import SignUp from "./components/pages/login/SignUp";
 import SignIn from "./components/pages/login/SignIn";
 import LogOut from "./components/pages/login/LogOut";
 import {UserContext, UserProvider} from "./context/UserContext";
+import {DialogContext, DialogProvider} from "./context/DialogContext";
 
 function App() {
   return (
     <UserProvider>
+    <DialogProvider>
     <ShoppingCartProvider>
       <CocktailsListProvider>
         <BrowserRouter>
@@ -66,6 +68,7 @@ function App() {
         </BrowserRouter>
       </CocktailsListProvider>
     </ShoppingCartProvider>
+    </DialogProvider>
     </UserProvider>
   );
 }
