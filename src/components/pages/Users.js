@@ -33,6 +33,9 @@ export default function Users() {
             color: "white",
             margin: "50px 0"
         },
+        tableCell: {
+            textAlign: "center"
+        },
         username: {
             textAlign: "center"
         }
@@ -66,35 +69,35 @@ export default function Users() {
                                 <TableCell className={classes.username}>{user.username}</TableCell>
 
                                 <TableCell>
-                                    <Table aria-label="simple table">
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell className={classes.tableHeader}>Course
-                                                    Type</TableCell>
-                                                <TableCell className={classes.tableHeader}>Quantity</TableCell>
-                                                <TableCell className={classes.tableHeader}>Total
-                                                    Price</TableCell>
-                                                {/*<TableCell className={classes.tableHeader}>Total</TableCell>*/}
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
 
-                                            {Object.keys(user.cart.cartMap).map(function (key) {
-                                                    return (
+                                    {user.cart.cartMap === {}
+                                        ? (<div> </div>) : (<Table aria-label="simple table">
+                                            <TableHead>
+                                                <TableRow>
+                                                    <TableCell className={classes.tableHeader}>Course Type</TableCell>
+                                                    <TableCell className={classes.tableHeader}>Quantity</TableCell>
+                                                    <TableCell className={classes.tableHeader}>Price</TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
 
-                                                        <TableRow>
-                                                            <TableCell>{key}</TableCell>
-                                                            <TableCell>{user.cart.cartMap[key]}</TableCell>
-                                                            <TableCell>{user.cart.cartMap[key] *
-                                                            quantityCalculation(key)} $ </TableCell>
-                                                        </TableRow>
 
-                                                    )
-                                                }
-                                            )}
-                                        </TableBody>
-                                    </Table>
+                                                {Object.keys(user.cart.cartMap).map(function (key) {
+                                                        return (
 
+                                                            <TableRow>
+                                                                <TableCell className={classes.tableCell}>{key}</TableCell>
+                                                                <TableCell className={classes.tableCell}>{user.cart.cartMap[key]}</TableCell>
+                                                                <TableCell className={classes.tableCell}>{user.cart.cartMap[key] *
+                                                                quantityCalculation(key)} $ </TableCell>
+                                                            </TableRow>
+
+                                                        )
+                                                    }
+                                                )}
+                                            </TableBody>
+                                        </Table>)
+                                    }
                                 </TableCell>
 
                             </TableRow>

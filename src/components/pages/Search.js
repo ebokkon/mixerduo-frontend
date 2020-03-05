@@ -77,7 +77,7 @@ export default function Search() {
               </CardActionArea>
               <CardActions>
                 <FavoriteIcon size="small" color="primary" />
-                <ShareIcon size="small" color="primary"></ShareIcon>
+                <ShareIcon size="small" color="primary"> </ShareIcon>
                 <Link
                   className={classes.link}
                   to={`/cocktails/${cocktail.idDrink}`}
