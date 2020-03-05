@@ -55,6 +55,9 @@ export default function SignUp() {
     const { user, setUser } = useContext(UserContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const history = useHistory();
 
@@ -76,7 +79,7 @@ export default function SignUp() {
 
     const sendRequest = (event) => {
         event.preventDefault();
-        let params = {"username": username, "password": password};
+        let params = {"username": username, "password": password, "firstname": firstname, "lastname": lastname, "email": email};
         axios.post("http://localhost:8080/auth/sign_up", params).then(response => checkResponse(response))
     };
 
@@ -85,6 +88,9 @@ export default function SignUp() {
             <form className={classes.form} onSubmit={sendRequest}>
                 { (message !== "") ?
                     <div className={`message`}>{message}</div> : <div> </div>}
+                    <input className={`formInput ${classes.input}`} type="text" placeholder="firstname" onChange={event => setFirstname(event.target.value)}/>
+                    <input className={`formInput ${classes.input}`} type="text" placeholder="lastname" onChange={event => setLastname(event.target.value)}/>
+                    <input className={`formInput ${classes.input}`} type="text" placeholder="email" onChange={event => setEmail(event.target.value)}/>
                     <input className={`formInput ${classes.input}`} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
                     <input className={`formInput ${classes.input}`} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
                     <input type="submit" value="Sign up" className={classes.button}/>
