@@ -27,6 +27,26 @@ const useStyles = makeStyles({
         boxSizing: "border-box",
         fontSize: "14px",
     },
+    inputLeft: {
+        fontFamily: "\"Roboto\", sans-serif",
+        outline: "0",
+        background: "#f2f2f2",
+        width: "30%",
+        border: "0",
+        margin: "0 2% 15px 0",
+        padding: "15px",
+        fontSize: "14px",
+    },
+    inputRight: {
+        fontFamily: "\"Roboto\", sans-serif",
+        outline: "0",
+        background: "#f2f2f2",
+        width: "30%",
+        border: "0",
+        margin: "0 0 15px 2%",
+        padding: "15px",
+        fontSize: "14px",
+    },
     button: {
         fontFamily: "\"Roboto\", sans-serif",
         textTransform: "uppercase",
@@ -45,6 +65,9 @@ const useStyles = makeStyles({
         width: "360px",
         padding: "8% 0 0",
         margin: "auto"
+    },
+    namesContainer: {
+        display: "flex"
     }
 });
 
@@ -88,8 +111,10 @@ export default function SignUp() {
             <form className={classes.form} onSubmit={sendRequest}>
                 { (message !== "") ?
                     <div className={`message`}>{message}</div> : <div> </div>}
-                    <input className={`formInput ${classes.input}`} type="text" placeholder="firstname" onChange={event => setFirstname(event.target.value)}/>
-                    <input className={`formInput ${classes.input}`} type="text" placeholder="lastname" onChange={event => setLastname(event.target.value)}/>
+                    <div className={classes.namesContainer}>
+                    <input className={`formInput ${classes.inputLeft}`} type="text" placeholder="firstname" onChange={event => setFirstname(event.target.value)}/>
+                    <input className={`formInput ${classes.inputRight}`} type="text" placeholder="lastname" onChange={event => setLastname(event.target.value)}/>
+                    </div>
                     <input className={`formInput ${classes.input}`} type="text" placeholder="email" onChange={event => setEmail(event.target.value)}/>
                     <input className={`formInput ${classes.input}`} type="text" placeholder="username" onChange={event => setUsername(event.target.value)}/>
                     <input className={`formInput ${classes.input}`} type="password" placeholder="password" onChange={event => setPassword(event.target.value)}/>
