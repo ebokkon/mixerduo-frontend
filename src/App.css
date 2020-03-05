@@ -50,11 +50,15 @@ html {
   overflow-x: scroll !important;
 }
 
-.button {
+.buttonCheckCourses {
   color: midnightblue !important;
   border-color: midnightblue !important;
   background: white !important;
   margin-top: 60px !important;
+}
+
+.cartMessageContainer {
+  text-align: center;
 }
 
 .buttont {
@@ -87,4 +91,9 @@ html {
 .circularProgress {
   text-align: center;
   margin-top: 30px;
+}
+
+.tableContainer {
+  margin: 5% auto;
+  max-width: 80%;
 }
