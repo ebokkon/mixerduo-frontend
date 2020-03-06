@@ -46,7 +46,7 @@ export default function Checkout () {
         </Paper>
         <Paper className={classes.paper}>
             <Button variant="outlined" color="primary" component={RouterLink} to="/shoppingcart">Return to Cart</Button>
-            <Button variant="outlined" color="primary">Proceed to Payment</Button>
+            <Button variant="outlined" color="primary" className={`proceed`}>Proceed to Payment</Button>
         </Paper>
         </div>
     );
