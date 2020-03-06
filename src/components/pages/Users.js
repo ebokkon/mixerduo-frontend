@@ -55,8 +55,11 @@ export default function Users() {
         }
     };
 
-    return (
-        allUsers.length <= 1 ?
+    const showPage = () => {
+        if (user.length === 0) {
+            return (  <EmptyContainerMessage message={"You are not authorized to see this page!"}/>)
+        }
+        return allUsers.length <= 1 ?
             <EmptyContainerMessage message={"There are no registered users!"}/>
             :
             (<TableContainer
@@ -67,11 +70,9 @@ export default function Users() {
                         {allUsers.map(user =>
                             <TableRow>
                                 <TableCell className={classes.username}>{user.username}</TableCell>
-
                                 <TableCell>
-
                                     {Object.entries(user.cart.cartMap).length === 0
-                                        ? (<div> </div>) : (<Table aria-label="simple table">
+                                        ? (<div></div>) : (<Table aria-label="simple table">
                                             <TableHead>
                                                 <TableRow>
                                                     <TableCell className={classes.tableHeader}>Course Type</TableCell>
@@ -80,18 +81,17 @@ export default function Users() {
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody>
-
-
                                                 {Object.keys(user.cart.cartMap).map(function (key) {
                                                         return (
 
                                                             <TableRow>
                                                                 <TableCell className={classes.tableCell}>{key}</TableCell>
-                                                                <TableCell className={classes.tableCell}>{user.cart.cartMap[key]}</TableCell>
-                                                                <TableCell className={classes.tableCell}>{user.cart.cartMap[key] *
+                                                                <TableCell
+                                                                    className={classes.tableCell}>{user.cart.cartMap[key]}</TableCell>
+                                                                <TableCell
+                                                                    className={classes.tableCell}>{user.cart.cartMap[key] *
                                                                 quantityCalculation(key)} $ </TableCell>
                                                             </TableRow>
-
                                                         )
                                                     }
                                                 )}
@@ -99,13 +99,14 @@ export default function Users() {
                                         </Table>)
                                     }
                                 </TableCell>
-
                             </TableRow>
                         )}
                     </TableBody>
                 </Table>
             </TableContainer>)
-
-    );
-
+    };
+    return (
+        <React.Fragment>
+            {showPage()}
+        </React.Fragment>)
 }

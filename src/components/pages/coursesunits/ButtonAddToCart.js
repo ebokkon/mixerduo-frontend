@@ -21,7 +21,9 @@ export default function ButtonAddToCart(props) {
         } else {
             let token = user.token;
             let header = {"Authorization": `Bearer ${token}`};
-            axios.post(`http://localhost:8080/add`, "title="+title+"&username="+user.username, {headers: header })
+            axios.post(`http://localhost:8080/add`,
+                "title="+title+"&username="+user.username,
+                {headers: header })
                 .then(response => setCart(response.data));
         }
     };
