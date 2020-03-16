@@ -6,15 +6,7 @@ export function useHttp(url, dependencies) {
   const [error, setError] = useState(true);
 
   useEffect(() => {
-    try {
-      async function fetchData() {
-        const response = await axios(url);
-        setFetchedData(response);
-      }
-      fetchData();
-    } catch (e) {
-      return error;
-    }
+    axios.post(url).then(response => setFetchedData(response.data))
   }, dependencies);
 
   return [fetchedData];

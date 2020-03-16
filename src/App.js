@@ -12,9 +12,18 @@ import CocktailDetails from "./components/pages/cocktailunits/CocktailDetails";
 import Search from "./components/pages/Search";
 import Courses from "./components/pages/Courses";
 import ShoppingCart from "./components/pages/ShoppingCart";
+import Checkout from "./components/pages/Checkout";
+import SignUp from "./components/pages/login/SignUp";
+import SignIn from "./components/pages/login/SignIn";
+import LogOut from "./components/pages/login/LogOut";
+import Users from "./components/pages/Users";
+import { UserProvider} from "./context/UserContext";
+import { DialogProvider} from "./context/DialogContext";
 
 function App() {
   return (
+    <UserProvider>
+    <DialogProvider>
     <ShoppingCartProvider>
       <CocktailsListProvider>
         <BrowserRouter>
@@ -38,7 +47,7 @@ function App() {
               path={`/cocktails/:id`}
               render={props => (
                 <React.Fragment>
-                  <CocktailDetails id={props} />
+                  <CocktailDetails id={props}/>
                 </React.Fragment>
               )}
             />
@@ -51,11 +60,18 @@ function App() {
                 </React.Fragment>
               )}
             />
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/sign-in" component={SignIn} />
+            <Route exact path="/log-out" component={LogOut} />
+            <Route exact path="/users" component={Users} />
             <Route exact path="/shoppingcart" component={ShoppingCart} />
+            <Route exact path="/shoppingcart/checkout" component={Checkout} />
           </div>
         </BrowserRouter>
       </CocktailsListProvider>
     </ShoppingCartProvider>
+    </DialogProvider>
+    </UserProvider>
   );
 }
 

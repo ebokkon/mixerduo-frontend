@@ -1,35 +1,42 @@
 import Button from "@material-ui/core/Button";
 import React, {useContext} from "react";
+import {UserContext} from "../../../context/UserContext";
 import {ShoppingCartContext} from "../../../context/ShoppingCartContext";
+import axios from "axios";
+import {DialogContext} from "../../../context/DialogContext";
+import DialogWindow from "./DialogWindow";
 
 export default function ButtonAddToCart(props) {
-    const { cart, handleCart } = useContext(ShoppingCartContext);
+    const { cart, setCart } = useContext(ShoppingCartContext);
+    const { user, setUser } = useContext(UserContext);
+    const { open, setOpen } = useContext(DialogContext);
 
-    const addToCart = (title, price) => {
-        let x = false;
-        for (let i = 0; i < cart.length; i++) {
-            for (let [key] of Object.entries(cart[i])) {
-                if (key === title) {
-                    x = true;
-                    cart[i][key] = (parseInt(cart[i][key]) + parseInt(price)).toString();
-                    break;
-                }
-            }
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const addToCart = (title) => {
+        if (user.length === 0){
+            handleClickOpen();
+        } else {
+            let token = user.token;
+            let header = {"Authorization": `Bearer ${token}`};
+            axios.post(`http://localhost:8080/add`, "title="+title+"&username="+user.username, {headers: header })
+                .then(response => setCart(response.data));
         }
-
-        if (!x) cart.push({ [title]: price });
-
-        handleCart(cart);
     };
 
     return(
+        <React.Fragment>
         <Button
-        onClick={() => addToCart(props.tier.title, props.tier.price)}
+        onClick={() => addToCart(props.tier.title)}
         fullWidth
         variant={props.tier.buttonVariant}
         color="primary"
     >
         {props.tier.buttonText}
     </Button>
+    <DialogWindow/>
+    </React.Fragment>
     )
 }
