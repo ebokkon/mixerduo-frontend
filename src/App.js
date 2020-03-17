@@ -22,7 +22,6 @@ import { DialogProvider} from "./context/DialogContext";
 
 function App() {
 
-
   return (
     <UserProvider>
     <DialogProvider>

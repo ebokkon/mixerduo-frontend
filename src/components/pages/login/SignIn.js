@@ -61,7 +61,6 @@ export default function SignIn() {
 
     const checkResponse = (response) => {
         if (response.data.correct) {
-            console.log(response.data);
             setUser(response.data);
             localStorage.setItem("token", response.data.token);
             redirect();

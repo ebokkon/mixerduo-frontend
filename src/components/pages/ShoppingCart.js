@@ -34,9 +34,17 @@ export default function ShoppingCart() {
     const {user, setUser} = useContext(UserContext);
 
     useEffect(() => {
-        let token = user.token;
-        let header = {"Authorization": `Bearer ${token}`};
-        axios.post("http://localhost:8080/get-cart", "username="+user.username, {headers: header}).then(response => setCart(response.data))
+        if (localStorage.getItem("token")){
+            let token = localStorage.getItem("token");
+            let base64Url = token.split('.')[1];
+            let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            let userDetails = JSON.parse(jsonPayload);
+            let header = {"Authorization": `Bearer ${token}`};
+            axios.post("http://localhost:8080/get-cart", "username="+ userDetails.sub, {headers: header}).then(response => setCart(response.data))
+        }
     }, []);
 
     const classes = useStyles();
