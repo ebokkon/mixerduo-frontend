@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
@@ -17,10 +17,12 @@ import SignUp from "./components/pages/login/SignUp";
 import SignIn from "./components/pages/login/SignIn";
 import LogOut from "./components/pages/login/LogOut";
 import Users from "./components/pages/Users";
-import { UserProvider} from "./context/UserContext";
+import {UserContext, UserProvider} from "./context/UserContext";
 import { DialogProvider} from "./context/DialogContext";
 
 function App() {
+
+
   return (
     <UserProvider>
     <DialogProvider>
