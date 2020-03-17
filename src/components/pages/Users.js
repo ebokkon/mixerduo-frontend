@@ -17,7 +17,7 @@ export default function Users() {
     const {user, userSetUser} = useContext(UserContext);
 
     useEffect(() => {
-        let token = user.token;
+        let token = localStorage.getItem("token");
         let header = {'Authorization': `Bearer ${token}`};
         axios.post("http://localhost:8080/users", null, {headers: header})
             .then(response => setAllUsers(response.data));
