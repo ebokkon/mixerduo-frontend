@@ -101,3 +101,29 @@ html {
 .proceed {
   margin-left: 32% !important;
 }
+
+.tableContainer {
+  min-width: 750px !important;
+  width: 750px !important;
+  max-width: 70%;
+  margin: 5% auto !important;
+}
+
+@media screen and (max-width: 900px) {
+  .tableContainer {
+    min-width: 85% !important;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .tableContainer {
+    min-width: 90% !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tableContainer {
+    min-width: 95% !important;
+    /*margin: 5% auto !important;*/
+  }
+}

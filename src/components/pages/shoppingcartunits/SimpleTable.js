@@ -24,7 +24,8 @@ export default function SimpleTable(props) {
 
     const useStyles = makeStyles({
         tableHeader: {
-            fontSize: 15,
+            fontSize: 20,
+            fontWeight: "bold",
             textAlign: "center"
         },
         tableTitle: {
@@ -77,8 +78,8 @@ export default function SimpleTable(props) {
   };
 
     return (
-            <div>
-            <div className={`tableTitle`}>
+            <div className={`shoppingCart`}>
+            <div className={classes.tableTitle}>
                 <ResponsiveFontSizes variant={"h3"} text={"Ordered Items: "}/>
             </div>
             <TableContainer
@@ -99,7 +100,7 @@ export default function SimpleTable(props) {
                         {Object.keys(cart).map(function (key) {
                             return (
                                 <TableRow key={key}>
-                                    <TableCell component="th" scope="row">
+                                    <TableCell align="center" component="th" scope="row">
                                         {key}
                                     </TableCell>
                                     <TableCell align="center">
