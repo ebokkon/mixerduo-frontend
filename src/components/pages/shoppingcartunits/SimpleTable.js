@@ -23,13 +23,23 @@ export default function SimpleTable(props) {
     const { user, setUser } = useContext(UserContext);
 
     const useStyles = makeStyles({
-        tableHeader: {fontWeight: "bold", fontSize: 20},
+        tableHeader: {
+            fontSize: 15,
+            textAlign: "center"
+        },
         tableTitle: {
             textAlign: "center",
             color: "white",
             margin: "50px 0"
+        },
+        tableCell: {
+            textAlign: "center"
+        },
+        username: {
+            textAlign: "center"
         }
     });
+
     const classes = useStyles();
 
     const quantityCalculation = courseTitle => {
@@ -67,12 +77,13 @@ export default function SimpleTable(props) {
   };
 
     return (
-        <Grid item>
-            <div className={classes.tableTitle}>
+            <div>
+            <div className={`tableTitle`}>
                 <ResponsiveFontSizes variant={"h3"} text={"Ordered Items: "}/>
             </div>
             <TableContainer
                 component={Paper}
+                className={`tableContainer`}
             >
                 <Table aria-label="simple table">
                     <TableHead>
@@ -128,6 +139,6 @@ export default function SimpleTable(props) {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </Grid>
+            </div>
     );
 }
