@@ -57,18 +57,7 @@ export default function ShoppingCart() {
             )
         } else {
             return (
-                <Grid container
-                      direction="column"
-                      justify="center"
-                      alignItems="center">
                     <SimpleTable cart={cart} className={`simpleTable`}/>
-                    {/*<Grid item className={`grid`}>*/}
-                    {/*<Paper  className={classes.paper}>*/}
-                    {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/courses">Continue Shopping</Button>*/}
-                    {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/shoppingcart/checkout">Checkout</Button>*/}
-                    {/*</Paper>*/}
-                    {/*</Grid>*/}
-                </Grid>
             )
         }
     };
