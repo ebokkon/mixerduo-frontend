@@ -48,27 +48,26 @@ export default function SimpleTable(props) {
   const increaseCart = (title) => {
       let token = user.token;
       let header = {"Authorization": `Bearer ${token}`};
-      axios.put(`http://localhost:8080/increase`, "title="+title+"&username="+user.username, {headers: header})
+      axios.put(`http://localhost:8762/increase`, "title="+title+"&username="+user.username, {headers: header})
           .then(response => setCart(response.data));
   };
 
   const decreaseCart = (title) => {
       let token = user.token;
       let header = {"Authorization": `Bearer ${token}`};
-      axios.put(`http://localhost:8080/decrease`, "title="+title+"&username="+user.username, {headers: header})
+      axios.put(`http://localhost:8762/decrease`, "title="+title+"&username="+user.username, {headers: header})
           .then(response => setCart(response.data))
   };
 
   const removeFromCart = (title) => {
       let token = user.token;
       let header = {"Authorization": `Bearer ${token}`};
-      axios.post(`http://localhost:8080/remove`,   "title="+title+"&username="+user.username, {headers: header})
+      axios.post(`http://localhost:8762/remove`,   "title="+title+"&username="+user.username, {headers: header})
           .then(response => setCart(response.data))
   };
 
     return (
         <Grid item>
-            <div>{console.log(cart)}</div>
             <div className={classes.tableTitle}>
                 <ResponsiveFontSizes variant={"h3"} text={"Ordered Items: "}/>
             </div>

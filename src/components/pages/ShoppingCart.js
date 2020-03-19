@@ -43,7 +43,7 @@ export default function ShoppingCart() {
             }).join(''));
             let userDetails = JSON.parse(jsonPayload);
             let header = {"Authorization": `Bearer ${token}`};
-            axios.post("http://localhost:8080/get-cart", "username="+ userDetails.sub, {headers: header}).then(response => setCart(response.data))
+            axios.post("http://localhost:8762/get-cart", "username="+ userDetails.sub, {headers: header}).then(response => setCart(response.data))
         }
     }, []);
 

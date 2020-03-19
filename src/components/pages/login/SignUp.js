@@ -103,7 +103,7 @@ export default function SignUp() {
     const sendRequest = (event) => {
         event.preventDefault();
         let params = {"username": username, "password": password, "firstname": firstname, "lastname": lastname, "email": email};
-        axios.post("http://localhost:8080/auth/sign_up", params).then(response => checkResponse(response))
+        axios.post("http://localhost:8762/auth/sign_up", params).then(response => checkResponse(response))
     };
 
     return (
