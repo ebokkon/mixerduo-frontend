@@ -43,7 +43,7 @@ export default function ShoppingCart() {
             }).join(''));
             let userDetails = JSON.parse(jsonPayload);
             let header = {"Authorization": `Bearer ${token}`};
-            axios.post("http://localhost:8080/get-cart", "username="+ userDetails.sub, {headers: header}).then(response => setCart(response.data))
+            axios.post("http://localhost:8762/get-cart", "username="+ userDetails.sub, {headers: header}).then(response => setCart(response.data))
         }
     }, []);
 
@@ -65,18 +65,9 @@ export default function ShoppingCart() {
             )
         } else {
             return (
-                <Grid container
-                      direction="column"
-                      justify="center"
-                      alignItems="center">
-                    <SimpleTable cart={cart} className={`simpleTable`}/>
-                    {/*<Grid item className={`grid`}>*/}
-                    {/*<Paper  className={classes.paper}>*/}
-                    {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/courses">Continue Shopping</Button>*/}
-                    {/*    <Button variant={"outlined"} color="primary" component={RouterLink} to="/shoppingcart/checkout">Checkout</Button>*/}
-                    {/*</Paper>*/}
-                    {/*</Grid>*/}
-                </Grid>
+                <React.Fragment>
+                   <SimpleTable cart={cart} className={`simpleTable`}/>
+                </React.Fragment>
             )
         }
     };
@@ -84,7 +75,8 @@ export default function ShoppingCart() {
     return (
         <React.Fragment>
             {page()}
-        </React.Fragment>)
+        </React.Fragment>
+    )
 }
 
 

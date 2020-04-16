@@ -19,7 +19,7 @@ export default function Users() {
     useEffect(() => {
         let token = localStorage.getItem("token");
         let header = {'Authorization': `Bearer ${token}`};
-        axios.post("http://localhost:8080/users", null, {headers: header})
+        axios.post("http://localhost:8762/users", null, {headers: header})
             .then(response => setAllUsers(response.data));
     }, []);
 
@@ -56,7 +56,7 @@ export default function Users() {
     };
 
     const showPage = () => {
-        if (user.length === 0) {
+        if (user.length === 0 || user.roles.length === 1) {
             return (  <EmptyContainerMessage message={"You are not authorized to see this page!"}/>)
         }
         return allUsers.length <= 1 ?
@@ -71,7 +71,7 @@ export default function Users() {
                             <TableRow>
                                 <TableCell className={classes.username}>{user.username}</TableCell>
                                 <TableCell>
-                                    {Object.entries(user.cart.cartMap).length === 0
+                                    {Object.entries(user.cartMap).length === 0
                                         ? (<div></div>) : (<Table aria-label="simple table">
                                             <TableHead>
                                                 <TableRow>
@@ -81,15 +81,15 @@ export default function Users() {
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody>
-                                                {Object.keys(user.cart.cartMap).map(function (key) {
+                                                {Object.keys(user.cartMap).map(function (key) {
                                                         return (
 
                                                             <TableRow>
                                                                 <TableCell className={classes.tableCell}>{key}</TableCell>
                                                                 <TableCell
-                                                                    className={classes.tableCell}>{user.cart.cartMap[key]}</TableCell>
+                                                                    className={classes.tableCell}>{user.cartMap[key]}</TableCell>
                                                                 <TableCell
-                                                                    className={classes.tableCell}>{user.cart.cartMap[key] *
+                                                                    className={classes.tableCell}>{user.cartMap[key] *
                                                                 quantityCalculation(key)} $ </TableCell>
                                                             </TableRow>
                                                         )
