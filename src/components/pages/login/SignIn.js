@@ -76,7 +76,7 @@ export default function SignIn() {
     const sendRequest = (event) => {
         event.preventDefault();
         let params = {"username": username, "password": password};
-        axios.post("http://localhost:8080/auth/sign_in", params).then(response => checkResponse(response))
+        axios.post("http://localhost:8762/auth/sign_in", params).then(response => checkResponse(response))
     };
 
     return (

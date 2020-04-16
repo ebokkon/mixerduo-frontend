@@ -21,12 +21,13 @@ export default function CocktailDetails(props) {
   const classes = useStyles();
 
   const [cocktail] = useHttp(
-    `http://localhost:8080/cocktails/${props.id.match.params.id}`,
+    `http://localhost:8762/cocktails/${props.id.match.params.id}`,
     []
   );
 
   return cocktail === null ? (
     <div>
+      <div>{console.log(cocktail)}</div>
       <CircularProgress />
     </div>
   ) : (
