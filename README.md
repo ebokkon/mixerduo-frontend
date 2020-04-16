@@ -9,7 +9,7 @@ Look no further! This web application is made for you: you can browse cocktails'
 
 Project Technologies and resources
 
-Frontend implementation in React that uses backend services provided by https://github.com/kagnest/mixerduo2/blob/feature/microservices/mixerduo2/
+Frontend implementation in React that uses backend services provided by https://github.com/kagnest/mixerduo2
 The React UI framework used in this project is Material UI.
 
 Data resource is provided by the https://www.thecocktaildb.com/ API.
