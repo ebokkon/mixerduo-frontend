@@ -56,7 +56,7 @@ export default function Users() {
     };
 
     const showPage = () => {
-        if (user.length === 0) {
+        if (user.length === 0 || user.roles.length === 1) {
             return (  <EmptyContainerMessage message={"You are not authorized to see this page!"}/>)
         }
         return allUsers.length <= 1 ?
