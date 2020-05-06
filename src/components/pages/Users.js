@@ -14,13 +14,14 @@ import EmptyContainerMessage from "./shoppingcartunits/EmptyContainerMessage";
 export default function Users() {
 
     const [allUsers, setAllUsers] = useState([]);
-    const {user, userSetUser} = useContext(UserContext);
+    const {user} = useContext(UserContext);
 
     useEffect(() => {
         let token = localStorage.getItem("token");
         let header = {'Authorization': `Bearer ${token}`};
         axios.post("http://localhost:8762/users", null, {headers: header})
-            .then(response => setAllUsers(response.data));
+            .then(response => setAllUsers(response.data))
+            .catch(error => console.log("error"));
     }, []);
 
     const useStyles = makeStyles({
@@ -81,10 +82,10 @@ export default function Users() {
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody>
-                                                {Object.keys(user.cartMap).map(function (key) {
+                                                {Object.keys(user.cartMap).map(function (key, index) {
                                                         return (
 
-                                                            <TableRow>
+                                                            <TableRow key={index}>
                                                                 <TableCell className={classes.tableCell}>{key}</TableCell>
                                                                 <TableCell
                                                                     className={classes.tableCell}>{user.cartMap[key]}</TableCell>

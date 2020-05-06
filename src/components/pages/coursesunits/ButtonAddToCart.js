@@ -7,9 +7,9 @@ import {DialogContext} from "../../../context/DialogContext";
 import DialogWindow from "./DialogWindow";
 
 export default function ButtonAddToCart(props) {
-    const { cart, setCart } = useContext(ShoppingCartContext);
-    const { user, setUser } = useContext(UserContext);
-    const { open, setOpen } = useContext(DialogContext);
+    const { setCart } = useContext(ShoppingCartContext);
+    const { user} = useContext(UserContext);
+    const { setOpen } = useContext(DialogContext);
 
     const handleClickOpen = () => {
         setOpen(true);
