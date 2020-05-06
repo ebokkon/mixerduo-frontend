@@ -5,13 +5,17 @@ export const CocktailsListContext = React.createContext();
 
 export const CocktailsListProvider = props => {
   const [cocktails, setCocktails] = useState([]);
+  const [cocktailNames, setCocktailNames] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8762/cocktails").then(response => setCocktails(response.data))
+    let promCocktails = axios.get("http://localhost:8762/cocktails").then(function (response){ setCocktails(response.data); return response});
+    promCocktails.then(function(response){ return response.data.map(cocktail => cocktail.strDrink)})
+        .then(cocktailNames=> setCocktailNames(cocktailNames))
   }, []);
 
+
   return (
-    <CocktailsListContext.Provider value={{ cocktails, setCocktails }}>
+    <CocktailsListContext.Provider value={{ cocktails, setCocktails, cocktailNames }}>
       {props.children}
     </CocktailsListContext.Provider>
   );

@@ -27,7 +27,6 @@ export default function CocktailDetails(props) {
 
   return cocktail === null ? (
     <div>
-      <div>{console.log(cocktail)}</div>
       <CircularProgress />
     </div>
   ) : (

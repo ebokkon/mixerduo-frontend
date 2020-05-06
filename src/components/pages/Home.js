@@ -5,7 +5,7 @@ import { UserContext} from "../../context/UserContext";
 
 export default function Home() {
 
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const text = (user.length === 0) ? "WELCOME" : "WELCOME "+ user.username;
 
   return (

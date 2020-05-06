@@ -38,7 +38,7 @@ export default function DialogWindow() {
         <Dialog
             open={open}
             onClose={handleClose}
-            modal={true}
+            modal="true"
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
             fullWidth={true}
@@ -53,7 +53,7 @@ export default function DialogWindow() {
             <DialogContent>
                 <Button style={{  margin: '5px 0 15px 150px'}}  variant={"outlined"} color="primary" component={RouterLink} to="/sign-in" onClick={handleClose}>Sign in</Button>
                 <DialogContentText style={{textAlign: 'center'}} id="alert-dialog-description">
-                    <div>Not a member yet, register here!</div>
+                    Not a member yet, register here!
                 </DialogContentText>
                 <Button  style={{  margin: '5px 0 15px 150px'}} variant={"outlined"} color="primary" component={RouterLink} to="/sign-up" onClick={handleClose}>Sign up</Button>
             </DialogContent>

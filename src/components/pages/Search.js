@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import { Link } from "react-router-dom";
-import CircularProgress from "../CircularProgress";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CocktailImage from "./cocktailunits/CocktailImage";
@@ -16,22 +15,18 @@ import { CocktailsListContext } from "../../context/CocktailsListContext";
 
 export default function Search() {
   const [selectedCocktail, setSelectedCocktail] = useState(null);
-  const { cocktails } = useContext(CocktailsListContext);
-  // const [search, setSearch] = useState("");
-  // const [filteredCocktails, setFilteredCocktails] = useState([]);
+  const { cocktails, cocktailNames } = useContext(CocktailsListContext);
+
 
   const handleOnchange = (event, value) => {
-    value === null ? setSelectedCocktail(null) : setSelectedCocktail(value);
+    if (value === null){
+      setSelectedCocktail(null)
+    } else {
+      let selected = cocktails.filter(cocktail => cocktail.strDrink === value);
+      setSelectedCocktail(selected[0]);
+    }
   };
 
-  // const handleSearch = (event, value) => {
-  //   setSearch(event.target.value);
-  //   setFilteredCocktails(
-  //     cocktails.filter(c =>
-  //       c.strDrink.match(new RegExp(event.target.value, "gi"))
-  //     )
-  //   );
-  // };
 
   const useStyles = makeStyles({
     card: {
@@ -50,8 +45,8 @@ export default function Search() {
       <div style={{ margin: "15px", padding: "auto" }}>
         <Autocomplete
           id="cocktail-select"
-          options={cocktails}
-          getOptionLabel={option => option.strDrink}
+          options={cocktailNames}
+          getOptionLabel={option => option}
           style={{ width: 400 }}
           onChange={(event, value) => handleOnchange(event, value)}
           renderInput={params => (
@@ -63,7 +58,6 @@ export default function Search() {
             />
           )}
         />
-        {/* <TextField value={search} onChange={handleSearch} /> */}
       </div>
       <div>
         {selectedCocktail === null ? (

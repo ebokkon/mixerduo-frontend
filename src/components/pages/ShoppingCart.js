@@ -4,34 +4,14 @@ import SimpleTable from "./shoppingcartunits/SimpleTable";
 import EmptyContainerMessage from "./shoppingcartunits/EmptyContainerMessage";
 import Button from "@material-ui/core/Button";
 import {Link as RouterLink} from "react-router-dom";
-import Paper from "@material-ui/core/Paper";
-import {makeStyles} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import {UserContext} from "../../context/UserContext";
 
 
-const useStyles = makeStyles(theme => ({
-    paper: {
-        maxWidth: 550,
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3),
-        padding: theme.spacing(2),
-        [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-            marginTop: theme.spacing(6),
-            marginBottom: theme.spacing(6),
-            padding: theme.spacing(3),
-        },
-        root: {
-            background: 'red'
-        }
-    },
-}));
-
 
 export default function ShoppingCart() {
     const {cart, setCart} = useContext(ShoppingCartContext);
-    const {user, setUser} = useContext(UserContext);
+    const {user} = useContext(UserContext);
 
     useEffect(() => {
         if (localStorage.getItem("token")){
@@ -47,7 +27,6 @@ export default function ShoppingCart() {
         }
     }, []);
 
-    const classes = useStyles();
 
     const page = () => {
         if (user.length === 0) {
