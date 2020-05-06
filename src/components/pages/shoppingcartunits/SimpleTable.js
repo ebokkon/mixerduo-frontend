@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import axios from "axios";
 import {ShoppingCartContext} from "../../../context/ShoppingCartContext";
 import ResponsiveFontSizes from "../../ResponsiveFontSizes";
@@ -14,13 +14,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Button from "@material-ui/core/Button";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/Remove';
-import Grid from "@material-ui/core/Grid";
 import {Link as RouterLink} from "react-router-dom";
 import {UserContext} from "../../../context/UserContext";
 
 export default function SimpleTable(props) {
     const {cart, setCart} = useContext(ShoppingCartContext);
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const useStyles = makeStyles({
         tableHeader: {

@@ -1,7 +1,6 @@
 import React from "react";
 import ResponsiveFontSizes from "../../ResponsiveFontSizes";
-import {Link as RouterLink} from "react-router-dom";
-import Button from "@material-ui/core/Button";
+
 
 export default function EmptyContainerMessage(props) {
     return (

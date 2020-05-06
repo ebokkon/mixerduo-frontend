@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 
 export default function SignIn() {
 
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");

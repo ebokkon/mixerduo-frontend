@@ -14,7 +14,7 @@ import EmptyContainerMessage from "./shoppingcartunits/EmptyContainerMessage";
 export default function Users() {
 
     const [allUsers, setAllUsers] = useState([]);
-    const {user, userSetUser} = useContext(UserContext);
+    const {user} = useContext(UserContext);
 
     useEffect(() => {
         let token = localStorage.getItem("token");

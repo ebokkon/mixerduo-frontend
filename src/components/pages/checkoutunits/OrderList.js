@@ -33,7 +33,7 @@ export default function OrderList () {
         }).join(''));
         let userDetails = JSON.parse(jsonPayload);
         let header = {"Authorization": `Bearer ${token}`};
-        axios.post("http://localhost:8762/mixerduo/get-cart", "username="+ userDetails.sub, {headers: header}).then(response => setCart(response.data))
+        axios.post("http://localhost:8762/get-cart", "username="+ userDetails.sub, {headers: header}).then(response => setCart(response.data))
     }, []);
 
     const classes = useStyles();
@@ -53,9 +53,9 @@ export default function OrderList () {
 
     const calculateTotal = () => {
         let total = 0;
-        Object.keys(cart).map(function(key){
+        Object.keys(cart).map((key) => (
             total += cart[key] * quantityCalculation(key)
-        });
+        ));
         return total;
     };
 
@@ -65,9 +65,9 @@ export default function OrderList () {
                 Order summary
             </Typography>
             <List disablePadding>
-                {Object.keys(cart).map(function(key) {
+                {Object.keys(cart).map(function(key, index) {
                     return (
-                        <ListItem className={classes.listItem}>
+                        <ListItem key={index} className={classes.listItem}>
                             <ListItemText primary={cart[key] + " " + key + " Course"}/>
                             <Typography variant="body2">{cart[key] *
                                     quantityCalculation(key)}$</Typography>
